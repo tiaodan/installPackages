@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <environments default="product">
+        <environment id="product">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://disp_ip:mysql_port/presence_dbname?useUnicode=true&amp;characterEncoding=utf8&amp;characterSetResults=utf8&amp;autoReconnect=true&amp;failOverReadOnly=false"/>
+                <property name="username" value="root"/>
+                <property name="password" value="sunkaisens"/>
+                <property name="poolPingEnabled" value="true"/>
+                <property name="poolPingQuery" value="select now() from presence.register_record limit 1"/>
+                <property name="poolPingConnectionsNotUsedFor" value="3600000"/>
+            </dataSource>
+        </environment>
+    
+    </environments>
+    <mappers>
+        <mapper resource="com/sunkaisens/presence/dao/HssDetailDocMapper.xml"/>
+        <mapper resource="com/sunkaisens/presence/dao/RegisterRecordMapper.xml"/>
+    </mappers>
+</configuration>

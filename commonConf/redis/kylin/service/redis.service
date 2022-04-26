@@ -1,0 +1,11 @@
+[Unit]
+Description=redis-server
+After=network.target
+
+[Service]
+#Type=forking
+ExecStart=/usr/local/bin/redis-server /usr/local/redis-5.0.3/redis_6380.conf
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

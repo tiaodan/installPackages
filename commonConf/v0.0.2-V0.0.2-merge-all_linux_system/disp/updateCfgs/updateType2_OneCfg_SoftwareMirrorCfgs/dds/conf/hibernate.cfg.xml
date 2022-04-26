@@ -1,0 +1,27 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory >	
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://dispIp:db_port/data_dispatch</property>
+		<property name="hibernate.connection.username">softwareDbUsername</property>
+		<property name="hibernate.connection.password">softwareDbpassword</property>
+		
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="hibernate.show_sql">false</property>
+		<property name="hibernate.format_sql">true</property>
+		
+		<property name="hibernate.connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+		<property name="hibernate.c3p0.max_size">30</property>
+		<property name="hibernate.c3p0.min_size">10</property> 
+		<!-- 数据库连接的空闲时间超过该值，将被回收，主要是针对高峰期创建的多余连接，单位为秒-->
+		<property name="hibernate.c3p0.timeout">300</property>
+		<property name="hibernate.c3p0.validate">true</property>
+		
+		<!-- <property name="hibernate.hbm2ddl.auto">create</property> -->
+		<property name="current_session_context_class">thread</property>
+	</session-factory>
+</hibernate-configuration>
+

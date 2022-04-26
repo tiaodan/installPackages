@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: eurekaName
+  cloud:
+    config:
+      name: application
+      uri: http://microIp:eurekaConfigPort
+      profile: cfgName
+      
+
+    

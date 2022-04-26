@@ -1,0 +1,45 @@
+#!/bin/sh
+#
+# emqttd       
+#
+# Startup script for emqttd.
+#
+# chkconfig: 2345 90 10
+# description: emqttd is mqtt broker.
+#
+# source function library
+. /etc/rc.d/init.d/functions
+ 
+export HOME=/root
+ 
+start() {
+    echo "starting emqx..."
+    #此处根据实际安装目录修改下面的路径
+    cd /opt/prj1808/basesoftware/emqx/emqx/bin && ./emqx start
+}
+ 
+stop() {
+    echo "stopping emqx..."
+    #此处根据实际安装目录修改下面的路径
+    cd /opt/prj1808/basesoftware/emqx/emqx/bin && ./emqx stop
+}
+ 
+restart() {
+    stop
+    start
+}
+ 
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    restart)
+        restart
+        ;;
+    *)
+        echo $"Usage: $0 {start|stop}"
+        RETVAL=2
+esac

@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: appserver-dds
+  cloud:
+server:
+  port: dds_local_port
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://microIp:microPort7000/eureka
+  instance:
+    ip-address: dispIp
+    instance-id: ${spring.application.name}-${server.port}
+    prefer-ip-address: true
+
+feign-service:
+  group: eurekaGroupServiceName
+  user-service: NMS-USER-HSS-ORGANIZATION-SERVICE
+  organization: NMS-USER-HSS-ORGANIZATION-SERVICE
+
+logging:
+  #config: classpath:log4j2-spring.xml
+  config: log4j2-spring.xml
+#single 单个部署 multi 多级多域
+deploy:
+  type: multi
+

@@ -1,0 +1,214 @@
+# 固定格式
+# 脚本自定义配置 绝对路径
+customShellCfgAbsPath=$projectPath/installPackages/commonConf/v0.0.2-V0.0.2-merge-all_linux_system/disp/updateCfgs/update.txt
+
+customSoftwareCfgName1=group
+# 实际要修改的软件配置 - 镜像配置(脚本自定义的) 绝对路径，如nms
+customSoftwareCfgAbsPath1=$projectPath/installPackages/commonConf/v0.0.2-V0.0.2-merge-all_linux_system/disp/updateCfgs/updateType2_OneCfg_SoftwareMirrorCfgs/group/*
+# 实际要修改的软件配置 绝对路径
+dstFileAbsPath1=/root/.NE/233-1
+
+customSoftwareCfgName2=bill
+# 实际要修改的软件配置 - 镜像配置(脚本自定义的) 绝对路径，如nms
+customSoftwareCfgAbsPath2=$projectPath/installPackages/commonConf/v0.0.2-V0.0.2-merge-all_linux_system/disp/updateCfgs/updateType2_OneCfg_SoftwareMirrorCfgs/bill/*
+# 实际要修改的软件配置 绝对路径
+dstFileAbsPath2=/root/.NE/256-1
+
+customSoftwareCfgName3=dds
+# 实际要修改的软件配置 - 镜像配置(脚本自定义的) 绝对路径，如nms
+customSoftwareCfgAbsPath3=$projectPath/installPackages/commonConf/v0.0.2-V0.0.2-merge-all_linux_system/disp/updateCfgs/updateType2_OneCfg_SoftwareMirrorCfgs/dds/application.yml
+# 实际要修改的软件配置 绝对路径
+dstFileAbsPath3=/root/.NE/237-1
+
+customSoftwareCfgName4=dds-conf
+# 实际要修改的软件配置 - 镜像配置(脚本自定义的) 绝对路径，如nms
+customSoftwareCfgAbsPath4=$projectPath/installPackages/commonConf/v0.0.2-V0.0.2-merge-all_linux_system/disp/updateCfgs/updateType2_OneCfg_SoftwareMirrorCfgs/dds/conf/*
+# 实际要修改的软件配置 绝对路径
+dstFileAbsPath4=/root/.NE/237-1/conf
+
+customSoftwareCfgName5=dispatcher
+# 实际要修改的软件配置 - 镜像配置(脚本自定义的) 绝对路径，如nms
+customSoftwareCfgAbsPath5=$projectPath/installPackages/commonConf/v0.0.2-V0.0.2-merge-all_linux_system/disp/updateCfgs/updateType2_OneCfg_SoftwareMirrorCfgs/dispatcher/application.properties
+# 实际要修改的软件配置 绝对路径
+dstFileAbsPath5=/root/.NE/257-1
+
+customSoftwareCfgName6=dispatcher-conf
+# 实际要修改的软件配置 - 镜像配置(脚本自定义的) 绝对路径，如nms
+customSoftwareCfgAbsPath6=$projectPath/installPackages/commonConf/v0.0.2-V0.0.2-merge-all_linux_system/disp/updateCfgs/updateType2_OneCfg_SoftwareMirrorCfgs/dispatcher/conf/*
+# 实际要修改的软件配置 绝对路径
+dstFileAbsPath6=/root/.NE/257-1/conf
+
+customSoftwareCfgName7=bill-lib32-centos7
+# 实际要修改的软件配置 - 镜像配置(脚本自定义的) 绝对路径，如nms
+customSoftwareCfgAbsPath7=$projectPath/installPackages/$systemVersion/bill/lib64/*
+# 实际要修改的软件配置 绝对路径
+dstFileAbsPath7=/home/common
+
+customSoftwareCfgName8=bill-centos7
+# 实际要修改的软件配置 - 镜像配置(脚本自定义的) 绝对路径，如nms
+customSoftwareCfgAbsPath8=$projectPath/installPackages/centos7/bill/m_bill.multi_hss_db.CentOS7.6_20200930_64
+# 实际要修改的软件配置 绝对路径
+dstFileAbsPath8=/root/.NE/256-1/m_bill.multi_hss_db.CentOS7.6_20200930_64
+
+customSoftwareCfgName9=bill-kylin
+# 实际要修改的软件配置 - 镜像配置(脚本自定义的) 绝对路径，如nms
+customSoftwareCfgAbsPath9=$projectPath/installPackages/kylin/bill/m_bill_kylin_20210507_64
+# 实际要修改的软件配置 绝对路径
+dstFileAbsPath9=/root/.NE/256-1/m_bill_kylin_20210507_64
+
+customSoftwareCfgName10=bill-nestart-all-system
+# 实际要修改的软件配置 - 镜像配置(脚本自定义的) 绝对路径，如nms
+customSoftwareCfgAbsPath10=$projectPath/installPackages/$systemVersion/bill/neStart.sh
+# 实际要修改的软件配置 绝对路径
+dstFileAbsPath10=/root/.NE/256-1/neStart.sh
+
+
+
+# 实际要修改的变量 key=value 形式
+# 【ip相关】
+microIp=$microIp  # 微服务ip
+microDomainName=eureka.com  # 微服务域名
+mqtt_ip=$emqIp  # mqtt ip
+mqttDomainName=emqtt.com  # mqtt 域名
+redisIp=$redisIp  # redis ip
+redisDomainName=redis.com  # redis 域名
+nmsIp=$nmsIp  # 网管ip
+nmsDomainHost=nms.com  # 网管 域名
+dispIp=$icssIp # 调度ip
+dispDomainName=disp.com  # 调度 域名
+switchIp=$switchIp  # 核心网ip 
+switchDomainName=switch.com  # 核心网 域名
+localMysqlIp=mysql.com  # 本机数据库ip
+localMysqlDomainName=mysql.com  # 本机数据库 域名
+datacenterIp=datacenter.com  # 数据中心 ip
+datacenterDomainName=datacenter.com  # 数据中心 域名
+oam_local_ip=oam.localhost.test.com
+oam_local_domainname=oam.localhost.test.com
+oam_remote_ip=oam.remote.com
+oam_remote_domainname=oam.remote.com
+
+
+superiorMicroIp=superior.micro.com  # 上级微服务ip
+superiorMicroDomainHost=superior.micro.com  # 上级微服务 域名
+superiorNmsIp=superior.nms.com  # 上级 网管 ip
+superiorNmsDomainHost=superior.nms.com  # 上级 网管 域名
+superiorDispIp=superior.disp.com  # 上级 调度 ip
+superiorDispDomainHost=superior.disp.com  # 上级 调度 域名
+superiorEmqttIp=superior.mqtt.com  # 上级mqtt ip
+superiorEmqttDomainName=$northEmqxIp  # 上级mqtt 域名
+north2OtherNmsIp=192.1.1.66  # 北向接口 报给其它系统的 ip
+north2OtherNmsDomainName=north2other.nms.com  # 北向接口 报给其它系统的 ip
+
+disp_unitFirstLevelIp=$unitFirstLevelIp
+disp_unitSecondLevelIp=$unitSecondLevelIp
+disp_unitThirdLevelIp=$unitThirdLevelIp
+disp_unitFourthLevelIp=$unitFourthLevelIp
+disp_unitFifthLevelIp=$unitFifthLevelIp
+
+# 【port 相关】
+redis_port=6380  # redis 端口
+hssPorxyPort=9523  # hss 代理端口
+mqtt_port=1883  # emq port
+groupPort=1000
+omcPort=28500
+tomcatPort=8080
+microPort7000=7000  # 微服务 端口1
+microPotr7001=7001  # 微服务 端口2
+superiorMqttPort=1883  # 上级mqtt port
+dispatcherPort=8090  # dispatcher 端口
+northInterfacePort=9988  # 北向接口 端口
+ftpPort=21  # ftp 端口
+switchPort=9922  # 核心网 某服务端口，不知道指向那个具体服务端口时，先指向这个端口
+northLocalPort=7355  # 北向接口 服务 本地端口
+north2OtherNmsPort=10000  # 北向接口 报给其它系统的 port
+local_oam_port=6124
+remote_oam_port=9999
+bill_local_port=9916  # billing 本地端口
+group_local_port=1000  # group 本地端口
+dds_local_port=7090  # dds 本地端口
+dds_sip_port=5095  # dds sip port
+pcscf_sip_port=4060 
+scscf_sip_port=6060
+disp_local_port=5082  # dispatcher 本地port
+imserver_sip_port=5090  # imserver sip port
+imserver_http_port=8010  # imserver http port
+kms_port=8888
+agw_sip_port=5070  # agw sip port
+preesnce_sip_port=5065  # presence sip port
+hss_sip_port=9915  # hss sip port
+db_port=3306
+
+
+
+# 【db 相关】
+softwareDbUsername=$softwareDbUsername  # 业务数据库用户名
+softwareDbpassword=$softwareDbpassword  # 业务数据库密码
+switchDbUsername=$switchDbUsername  # 核心网数据库用户名
+switchDbPassword=$switchDbPassword  # 核心网数据库密码
+
+hssDbName=hss
+hss1DbName=hss1
+hss2DbName=hss2
+hss3DbName=hss3
+hss4DbName=hss4
+myomcDbName=myomc
+CSCF_DBDbName=CSCF_DB
+ocrDbName=ocr
+presenceDbName=presence
+imserverDbName=imserver
+hss_proxy_serviceDbName=hss_proxy_service
+organizationDbName=2011_organization_service
+resourceDbName=2011_resource_service  # 资源管理-数据库名
+statisticDbName=2011_statistic_service  # 性能统计-数据库名
+alarmDbName=2011_alarm_service  # 告警
+devconfigNameDbName=2011_devconfig_service  # 设备
+securityDbName=2011_security_service  # 安全管理
+userDbName=2011_user_service   # 用户
+statisticDbName=2011_statistic_service  # 性能统计
+
+#  【微服务名称相关】
+eurekaOrganizationServiceName=$eurekaOrganizationServiceName  # 组织架构 微服务名称
+eurekaUserServiceName=$eurekaUserServiceName  # 用户管理 微服务名称
+eurekaSecurityServiceName=$eurekaSecurityServiceName  # 安全管理
+eurekaResourceServiceName=$eurekaResourceServiceName  # 资源管理模块 微服务名称
+eurekaAlarmServiceName=$eurekaAlarmServiceName  # 告警模块 微服务名称
+eurekaDevconfigServiceName=$eurekaDevconfigServiceName # 告警模块 微服务名称
+eurekaGroupServiceName=$eurekaGroupServiceName
+
+# 【网管级别相关】
+localNmsUnitid=1  # 本机组织单位id
+
+# 【ftp相关】
+ftpUsername=root  # ftp 登录用户名
+ftpPassword=123456  # ftp 登录密码
+
+
+# 【disp部署方式 + 相关 + 号段】
+disp_deploy_type=multi
+icssViturlNumber=$icssViturlNumber  # 调度虚拟号码
+isUnitidHighest=$isUnitidHighest  # 是否最高级
+isPresenceEnable=true  # 呈现 开关是否开启
+isImserverEnable=false  # 短信 开关是否开启
+isGroupEnable=true  # 群组 开关是否开启
+isDdsEnable=true  # dds 开关是否开启
+
+disp_is_use_googlemap=true
+groupserver_is_return_groupmembers_by_online_status=true
+
+localUnitDispNumberRange1=$localUnitDispNumberRange1
+localUnitDispNumberRange2=$localUnitDispNumberRange2
+localUnitDispNumberRange3=$localUnitDispNumberRange3
+localUnitDispNumberRange4=$localUnitDispNumberRange4
+localUnitDispNumberRange5=$localUnitDispNumberRange5
+localUnitDispNumberRange6=$localUnitDispNumberRange6
+localUnitDispNumberRange7=$localUnitDispNumberRange7
+
+
+
+
+
+
+
+
+
+

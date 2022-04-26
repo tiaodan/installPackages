@@ -1,0 +1,69 @@
+# 固定格式
+# 脚本自定义配置 绝对路径
+customShellCfgAbsPath=$projectPath/installPackages/commonConf/v0.0.2-V0.0.2-merge-all_linux_system/micro/updateCfgs/updateType1_OneByOne_CustomCfgs/updateAll.txt
+
+# 实际要修改的软件配置 - 镜像配置(脚本自定义的) 绝对路径，如nms
+customSoftwareCfgAbsPath=$projectPath/installPackages/commonConf/v0.0.2-V0.0.2-merge-all_linux_system/micro/updateCfgs/updateType1_OneByOne_SoftwareMirrorCfgs/application-all.yml
+
+# 实际要修改的软件配置 绝对路径 
+dstFileAbsPath=$projectPath/micro/sun-nms-config-server/config/application-all.yml
+
+# 实际要修改的变量 key=value 形式
+localPort=7125  # 本服务端口
+nmsIp=nms.com  # 本地地址
+dispIp=disp.com  # 调度地址
+eurekaOrganizationServiceName=$eurekaOrganizationServiceName  # 组织架构4合1 微服务名称
+eurekaSecurityServiceName=$eurekaSecurityServiceName  # 安全管理
+eurekaResourceServiceName=$eurekaResourceServiceName  # 资源管理模块 微服务名称
+eurekaAlarmServiceName=$eurekaAlarmServiceName  # 告警模块 微服务名称
+eurekaDevconfigServiceName=$eurekaDevconfigServiceName # 告警模块 微服务名称
+
+softwareDbUsername=$softwareDbUsername  # 业务数据库用户名
+softwareDbpassword=$softwareDbpassword  # 业务数据库密码
+switchDbUsername=$switchDbUsername  # 核心网数据库用户名
+switchDbPassword=$switchDbPassword  # 核心网数据库密码
+
+localMysqlIp=mysql.com  # 本机数据库ip
+switchIp=switch.com  # 核心网ip
+dispIp=disp.com  # 调度台ip
+
+userDbName=2011_user_service
+hssDbName=hss
+hss1DbName=hss1
+hss2DbName=hss2
+hss3DbName=hss3
+hss4DbName=hss4
+myomcDbName=myomc
+CSCF_DBDbName=CSCF_DB
+hss_proxy_serviceDbName=hss_proxy_service
+organizationDbName=2011_organization_service
+ocrDbName=ocr
+presenceDbName=presence
+imserverDbName=imserver
+resourceDbName=2011_resource_service  # 资源管理-数据库名
+statisticDbName=2011_statistic_service  # 性能统计-数据库名
+
+redisIp=redis.com  # redis ip
+redisPort=$redisPort  # redis 端口
+
+emqttIp=emqtt.com  # emq ip
+emqttPort=1883  # emq port
+superiorEmqttIp=superior.mqtt.com  # 上级mqtt ip
+superiorEmqttPort=1883  # 上级mqtt port
+groupPort=1000
+omcPort=28500
+dispatcherPort=8090  # dispatcher 端口
+northInterfacePort=9988  # 北向接口 端口
+ftpPort=21  # ftp 端口
+ftpUsername=root  # ftp 登录用户名
+ftpPassword=123456  # ftp 登录密码
+
+microIp=eureka.com
+microPort1=7000
+microPort2=7001
+
+
+
+
+
+

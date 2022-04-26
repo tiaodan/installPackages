@@ -1,0 +1,17 @@
+server: 
+  port: config_port
+  
+spring:
+  application:
+    name: config-service
+  profiles:
+    active: native
+    
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: nmsCfgFolderPath
+
+logging:
+  config: log4j2-spring.xml

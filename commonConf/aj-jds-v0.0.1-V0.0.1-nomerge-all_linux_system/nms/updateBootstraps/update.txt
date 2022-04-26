@@ -1,0 +1,183 @@
+## 固定格式
+# 脚本自定义配置 绝对路径
+customShellCfgAbsPath=$projectPath/installPackages/commonConf/$versionCfgFolderName/nms/updateBootstraps/update.txt
+
+# 实际要修改的软件配置 - 镜像配置(脚本自定义的) 绝对路径，如nms
+customSoftwareCfgAbsPath1=$projectPath/installPackages/commonConf/$versionCfgFolderName/nms/updateBootstraps/bootstraps/location.sh
+customSoftwareCfgAbsPath2=$projectPath/installPackages/commonConf/$versionCfgFolderName/nms/updateBootstraps/bootstraps/application.yml
+
+
+# 实际要修改的软件配置 绝对路径
+dstFileAbsPath1=$projectPath/nms/backend/sun-nms-north-service/location.sh
+dstFileAbsPath2=$projectPath/nms/backend/sun-nms-north-service/application.yml
+
+
+# 实际要修改的变量 key=value 形式
+## 【ip相关】
+# 基础服务
+mqtt_ip=emqtt.com  # mqtt ip
+mqtt_domain=emqtt.com  # mqtt 域名
+redis_ip=$redisIp  # redis ip
+redis_domain=redis.com  # redis 域名
+mysql_ip=mysql.com
+mysql_domain=mysql.com
+eureka_ip=eureka.com  # eureka ip
+eureka_domain=eureka.com  # eureka 域名
+
+Local_Mysql_Ip=mysql.com  # 本机数据库ip
+Local_Mysql_Domain=mysql.com  # 本机数据库 域名
+
+Up_Mqtt_Ip=superior.mqtt.com  # 上级mqtt ip
+Up_Mqtt_Domain=superior.mqtt.com  # 上级mqtt 域名
+
+# 微服务
+micro_ip=eureka.com  # 微服务ip
+micro_domain=eureka.com  # 微服务域名
+
+Up_Micro_Ip=superior.micro.com  # 上级微服务ip
+Up_Micro_Domain=superior.micro.com  # 上级微服务 域名
+
+# 网管
+nms_ip=$nmsIp  # 网管ip
+nms_domain=nms.com  # 网管 域名
+datacenter_ip=datacenter.com  # 数据中心 ip
+datacenter_domain=datacenter.com  # 数据中心 域名
+
+Up_Nms_Ip=superior.nms.com  # 上级 网管 ip
+Up_Nms_Domain=superior.nms.com  # 上级 网管 域名
+
+# 调度
+disp_ip=disp.com  # 调度ip
+disp_domain=disp.com  # 调度 域名
+oam_ip=oam.localhost.test.com  # 本机oam ip
+oam_domain=oam.localhost.test.com  # 本机 oam hosts
+
+Local_Oam_Ip=oam.localhost.test.com  # 本机oam ip
+Local_Oam_Domain=nms.com 
+Remote_Oam_Ip=nms.com
+Remote_Oam_Domain=nms.com
+Up_Disp_Ip=superior.disp.com  # 上级 调度 ip
+Up_Disp_Domain=superior.disp.com  # 上级 调度 域名
+North_2_Other_Nms_Ip=north2other.nms.com  # 北向接口 报给其它系统的 ip
+North_2_Other_Nms_Domain=north2other.nms.com  # 北向接口 报给其它系统的 ip
+
+# 核心网
+switch_ip=$switchIp  # 核心网ip 
+switch_domain=switch.com  # 核心网 域名
+
+## 【port 相关】
+# 基础服务
+redis_port=6380  # redis 端口
+mqtt_port=1883  # emq port
+ftp_port=21  # ftp 端口
+mysql_port=3306   # mysql 端口
+
+db_port=3306
+Up_Mqtt_Port=1883  # 上级mqtt port
+
+# 微服务
+micro_port1=7000  # 微服务 端口1
+micro_port2=7001  # 微服务 端口2
+config_port=7010  # 配置中心端口
+
+# nms
+omc_port=28500
+user_port=12000  # 用户管理 port
+monitor_port=3333 # monitor 端口
+ne_port=7390  # ne port
+ne_udp_port=27500
+north_port=7355  # north port
+resource_port=7305  # resource port
+alarm_port=7110  # 告警 端口
+hss_proxy_port=9523  # hss代理 port
+organization_port=7125  # 组织机构 port
+resource_udp_port=8325  # 资源管理 port
+statistic_port=7320  # 性能统计 port
+security_port=7300  # 配置中心端口
+
+Local_North_Interface_Port=7355  # 本地北向接口 端口
+Remote_North_Interface_Port=9988  # 北向 指向的远程端口
+
+# 调度
+group_port=1000
+disp_port=8090  # dispatcher 端口
+
+# 核心网
+switch_port=9922  # 核心网 某服务端口，不知道指向那个具体服务端口时，先指向这个端口
+
+## 【db 相关】
+software_db_username=$softwareDbUsername  # 业务数据库用户名
+software_db_password=$softwareDbpassword  # 业务数据库密码
+switch_db_username=$switchDbUsername  # 核心网数据库用户名
+switch_db_password=$switchDbPassword  # 核心网数据库密码
+
+# nms
+ocr_dbname=ocr
+hss_proxy_dbname=hss_proxy_service
+north_dbname=aj03_north_service  # 北向-数据库名
+organization_dbname=aj03_organization_service
+resource_dbname=aj03_resource_service  # 资源管理-数据库名
+statistic_dbname=aj03_statistic_service  # 性能统计-数据库名
+alarm_dbname=aj03_alarm_service  # 告警
+devconfig_dbname=aj03_devconfig_service  # 设备
+security_dbname=aj03_security_service  # 安全管理
+user_dbname=aj03_user_service   # 用户
+statistic_dbname=aj03_statistic_service  # 性能统计
+
+# disp
+group_dbname=group
+presence_dbname=presence
+imserver_dbname=imserver
+agw_dbname=agw
+dispatcher_dbname=dispatcher
+vdcsg_dbname=vdcsg
+
+# switch
+hss_dbname=hss
+hss1_dbname=hss1
+hss2_dbname=hss2
+hss3_dbname=hss3
+hss4_dbname=hss4
+myomc_dbname=myomc
+cscf_db_dbname=CSCF_DB
+
+##  【微服务名称相关】
+eurekaOrganizationServiceName=$eurekaOrganizationServiceName  # 组织架构4合1 微服务名称
+eurekaSecurityServiceName=$eurekaSecurityServiceName  # 安全管理
+eurekaResourceServiceName=$eurekaResourceServiceName  # 资源管理模块 微服务名称
+eurekaAlarmServiceName=$eurekaAlarmServiceName  # 告警模块 微服务名称
+eurekaDevconfigServiceName=$eurekaDevconfigServiceName # 告警模块 微服务名称
+eurekaEquipmentServiceName=$eurekaEquipmentServiceName  # 设备管理
+eurekaHssProxyServiceName=$eurekaHssProxyServiceName  # hss代理模块 微服务名称
+eurekaUserServiceName=$eurekaUserServiceName  # 用户管理  微服务名称
+eurekaStatisticServiceName=$eurekaStatisticServiceName  # 性能统计 微服务名称
+eurekaMonitorServiceName=$eurekaMonitorServiceName  # Monitor 微服务名称
+eurekaNeServiceName=$eurekaNeServiceName  # Ne 微服务名称
+eurekaNorthServiceName=$eurekaNorthServiceName  # north 微服务名称
+eurekaTopologyServiceName=$eurekaTopologyServiceName  # 拓扑管理 微服务名称
+
+# 【网管级别相关】
+nms_unitid=1  # 本机组织单位id
+up_nms_level=1  # 上级网管层级
+up_nms_unitid=3 # 上级网管id
+
+# 【ftp相关】
+ftp_username=ftpuser  # ftp 登录用户名
+ftp_password=password  # ftp 登录密码
+
+## 【其它】
+nmsCfgFolderPath=$projectPath/micro/sun-nms-config-server/config# 微服务配置文件路径目录
+
+
+
+
+
+
+
+
+
+
+
+
+
+

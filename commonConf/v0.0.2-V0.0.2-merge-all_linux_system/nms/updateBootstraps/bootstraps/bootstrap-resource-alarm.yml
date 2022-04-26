@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      enabled: true
+      name: application
+      uri: http://microIp:eurekaConfigPort
+      profile: cfgName

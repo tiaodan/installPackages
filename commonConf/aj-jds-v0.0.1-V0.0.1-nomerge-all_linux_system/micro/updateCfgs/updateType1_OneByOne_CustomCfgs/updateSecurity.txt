@@ -1,0 +1,31 @@
+# 固定格式
+# 脚本自定义配置 绝对路径
+customShellCfgAbsPath=$projectPath/installPackages/commonConf/v0.0.2-V0.0.2-merge-all_linux_system/micro/updateCfgs/updateType1_OneByOne_CustomCfgs/updateSecurity.txt
+
+# 实际要修改的软件配置 - 镜像配置(脚本自定义的) 绝对路径，如nms
+customSoftwareCfgAbsPath=$projectPath/installPackages/commonConf/v0.0.2-V0.0.2-merge-all_linux_system/micro/updateCfgs/updateType1_OneByOne_SoftwareMirrorCfgs/zuul-config.yml
+
+# 实际要修改的软件配置 绝对路径 
+dstFileAbsPath=$projectPath/micro/sun-nms-config-server/config/zuul-config.yml
+
+# 实际要修改的变量 key=value 形式
+localPort=7100  # 本服务端口
+eurekaSecurityServiceName=$eurekaSecurityServiceName  # 安全管理-微服务名称 
+softwareDbUsername=$softwareDbUsername  # 业务数据库用户名
+softwareDbpassword=$softwareDbpassword  # 业务数据库密码
+localMysqlIp=mysql.com  # 本机数据库ip
+securityDbName=2011_security_service  # 安全管理-数据库名
+Db2Name=febs_test  # 未知
+redisIp=redis.com  # redis ip
+redisPort=$redisPort  # redis 端口
+emqttIp=emqtt.com  # emq ip
+microIp=eureka.com  # 微服务ip
+microPort=7000  # 微服务 端口
+eurekaAlarmServiceName=$eurekaAlarmServiceName  # 告警模块 微服务名称
+eurekaEquipmentServiceName=$eurekaEquipmentServiceName  # 资源管理 微服务名称
+eurekaOrganizationServiceName=$eurekaOrganizationServiceName  # 组织机构管理 微服务名称
+eurekaStatisticServiceName=$eurekaStatisticServiceName  # 性能统计 微服务名称
+eurekaTopologyServiceName=$eurekaTopologyServiceName  # 拓扑管理 微服务名称
+eurekaDevConfigServiceName=$eurekaDevConfigServiceName  # 设备配置管理 微服务名称
+eurekaUserServiceName=$eurekaUserServiceName  # 用户管理 微服务名称
+

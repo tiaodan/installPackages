@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      enabled: true
+      name: zuul
+      uri: http://config.com:config_port
+      profile: config-aj03

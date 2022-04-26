@@ -1,0 +1,75 @@
+#!/bin/bash 
+
+版本记录
+========== v0.0.6 ==========
+1. 脚本区分项目
+2. 可控制是否显示隐藏功能
+3. 不限制用户打包方式，放到目录即可
+4. 脚本生成给用户的安装包文件夹，放到package文件夹
+5. 设置了初始项目，其它项目相关的一切就算显示，也不可用
+
+
+# 代办
+1. 引导用户+ 设置项目 √
+2. util.sh 里加入centos8 相关选项 √
+3. 创建文件夹 √
+4. 修改引导用户文件aj, 可控制是否显示功能菜单 √
+5. 控制隐藏功能是否可用 x
+6. 关闭防火墙 √
+7. selinux  √
+8. 虚拟网卡 √
+
+6. 安装redis √
+7. 安装emqx √
+8. 安装nginx √
+9. 安装mysql √
+10. 安装oam √
+11. 安装hosts √
+12. 调度  --》
+
+13. jds localtion ip改的不对
+========== v0.0.5 ==========
+1. 统一修改update.txt的位置，就一个文件
+3. 改moniror 获取不到nmsUnitId
+
+# 软件版本记录--》20220225 --》shell -->0.0.5
+# disp
+oam-arm: oam-v0.2.8_arm-kylin-20220207
+oam-c7: oam-v0.2.8_x86_64-c7-20220209
+group: appserver-springboot-group-2.1.10
+dispatcher: dispatcher-server-1.0.27
+dds: appserver-dds-3.0.3
+bill-arm:  m_bill_kylin_20210507_64
+bill-c7: m_bill.multi_hss_db.CentOS7.6_20200930_64
+调度前端: disp-dist-broadbandDispacher_2021.09.04_0.0.1-97-g20427da
+
+# nms
+资源管理： sun-nms-resource-alarm-service-0.0.7-SNAPSHOT
+组织机构： sun-nms-user-hss-organization-service-0.0.12-SNAPSHOT
+monitor: monitor-service-0.0.2
+ne: ne-0.0.3-SNAPSHOT
+北向： sun-nms-north-service-0.0.4-SNAPSHOT
+安全管理： sun-nms-security-service-0.0.1-SNAPSHOT
+网管前端 nms-dist-v2.0.10-89-g38922c06
+========== v0.0.5 ==========
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

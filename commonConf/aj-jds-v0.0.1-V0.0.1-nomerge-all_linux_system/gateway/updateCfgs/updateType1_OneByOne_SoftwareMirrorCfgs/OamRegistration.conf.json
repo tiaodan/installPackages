@@ -1,0 +1,20 @@
+{
+	"host": "nms_domainName",
+	"port": gateway_oam_port,
+	"time": 40000,
+	"debugConf": {
+		"synMonitor": false,
+		"soBroadcast": false
+	},
+	"mqttConf": {
+		"broker": "tcp://mqtt_domainName:mqtt_port",
+		"clientId": "nms-OamRegistration",
+		"cleanSession": true,
+		"automaticReconnect": true,
+		"maxInflight": 64,
+		"connectionTimeout": 60,
+		"keepAliveInterval": 60,
+		"topicAlarm": "alarm-service/alarm",
+		"topicEquipment": "resource-service/status_oam"
+	}
+}

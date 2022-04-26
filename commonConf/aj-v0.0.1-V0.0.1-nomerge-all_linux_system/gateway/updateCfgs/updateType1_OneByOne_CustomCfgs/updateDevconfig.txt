@@ -1,0 +1,161 @@
+# 固定格式
+# 脚本自定义配置 绝对路径
+customShellCfgAbsPath=$projectPath/installPackages/commonConf/v0.0.2-V0.0.2-merge-all_linux_system/gateway/updateCfgs/updateDevconfig.txt
+
+# 实际要修改的软件配置 - 镜像配置(脚本自定义的) 绝对路径，如nms
+customSoftwareCfgAbsPath1=$projectPath/installPackages/commonConf/v0.0.2-V0.0.2-merge-all_linux_system/gateway/updateCfgs/updateType2_OneCfg_SoftwareMirrorCfgs/application-devconfig.yml
+
+# 实际要修改的软件配置 绝对路径
+dstFileAbsPath1=$projectPath/gateway/sun-nms-devconfig-service-0.0.1-SNAPSHOT/application.yml
+
+# 实际要修改的变量 key=value 形式
+# 【ip相关】
+micro_ip=eureka.com  # 微服务ip
+micro_domainName=eureka.com  # 微服务域名
+mqtt_ip=emqtt.com  # mqtt ip
+mqtt_domainName=emqtt.com  # mqtt 域名
+redis_ip=redis.com  # redis ip
+redis_domainName=redis.com  # redis 域名
+nms_ip=nms.com  # 网管ip
+nms_domainName=nms.com  # 网管 域名
+disp_ip=disp.com  # 调度ip
+disp_domainName=disp.com  # 调度 域名
+switch_ip=switch.com  # 核心网ip 
+switch_domainName=switch.com  # 核心网 域名
+switch_remote_ip=switch.com  # 远端 核心网ip
+
+
+mysql_local_ip=mysql.com  # 本机数据库ip
+mysql_local_domainName=mysql.com  # 本机数据库 域名
+datacenter_ip=datacenter.com  # 数据中心 ip
+datacenter_domainName=datacenter.com  # 数据中心 域名
+oam_local_ip=oam.localhost.test.com  # 本机oam ip
+oam_local_domainName=nms.com
+oam_remote_ip=nms.com
+oam_remote_domainname=nms.com
+
+superior_micro_ip=superior.micro.com  # 上级微服务ip
+superior_micro_domainName=superior.micro.com  # 上级微服务 域名
+superior_nms_ip=superior.nms.com  # 上级 网管 ip
+superior_nms_domainName=superior.nms.com  # 上级 网管 域名
+superior_disp_ip=superior.disp.com  # 上级 调度 ip
+superior_disp_domainName=superior.disp.com  # 上级 调度 域名
+superior_mqtt_ip=superior.mqtt.com  # 上级mqtt ip
+superior_mqtt_domainName=superior.mqtt.com  # 上级mqtt 域名
+north2OtherNmsIp=north2other.nms.com  # 北向接口 报给其它系统的 ip
+north2OtherNmsDomainName=north2other.nms.com  # 北向接口 报给其它系统的 ip
+
+# 【port 相关】
+redis_port=6380  # redis 端口
+mqtt_port=1883  # emq port
+group_port=1000
+omc_port=28500
+oam_local_port=6124
+oam_remote_port=9999
+micro_port1=7000  # 微服务 端口1
+micro_port2=7001  # 微服务 端口2
+micro_port7000=7000  # 微服务 端口1
+micro_port7001=7001  # 微服务 端口2
+superior_mqtt_port=1883  # 上级mqtt port
+dispatcher_port=8090  # dispatcher 端口
+north_interface_port=9988  # 北向接口 端口
+ftp_port=21  # ftp 端口
+switch_port=9922  # 核心网 某服务端口，不知道指向那个具体服务端口时，先指向这个端口
+north_local_port=7355  # 北向接口 服务 本地端口
+gateway_oam_port=8324  # oam网关  本地端口
+
+# v0.0.1 版本配置
+north2OtherNmsPort=10000  # 北向接口 报给其它系统的 port
+user_local_port=7350  # 用户管理 port
+monitor_local_port=3333 # monitor 端口
+ne_local_port=7390  # ne port
+ne_udp_local_port=27500
+north_local_port=7355  # north port
+resource_local_port=6789  # resource port
+security_local_port=7100  # 安全管理 端口
+alarm_local_port=7110  # 告警 端口
+hss_proxy_port=9523  # hss代理 port
+organization_port=7125  # 组织机构 port
+resource_udp_port=8325  # 资源管理 port
+statistic_local_port=7120  # 性能统计 port
+config_server_local_port=7010  # 配置中心 本地端口
+db_port=3306
+nms_login_port=12002  # 网管前端登录端口
+datacenter_port=7100  # 数据中心port
+devconfig_local_port=11000  # 设备管理 端口
+switch_remote_port=6124  # 远端 核心网端口
+nms_log_port=7300  # 网管日志 端口
+devconfig_bts_port=9184  # 原是9183 与nms-resource-alarm服务冲突
+devconfig_oam_bts_port=9923  # 原是9922 与nms-resource-alarm服务冲突
+
+# v0.0.2 版本配置
+resource_alarm_local_udp_port=8686  # resource-alarm模块 udp port
+user-hss-organization_local_port=7350
+
+
+# 【db 相关】
+softwareDbUsername=$softwareDbUsername  # 业务数据库用户名
+softwareDbpassword=$softwareDbpassword  # 业务数据库密码
+switchDbUsername=$switchDbUsername  # 核心网数据库用户名
+switchDbPassword=$switchDbPassword  # 核心网数据库密码
+
+hss_dbname=hss
+hss1_dbname=hss1
+hss2_dbname=hss2
+hss3_dbname=hss3
+hss4_dbname=hss4
+myomc_dbname=myomc
+CSCF_DB_dbname=CSCF_DB
+ocr_dbname=ocr
+presence_dbname=presence
+imserver_dbname=imserver
+hss_proxy_service_dbname=hss_proxy_service
+north_dbname=2011_north_service  # 北向-数据库名
+organization_dbname=2011_organization_service
+resource_dbname=2011_resource_service  # 资源管理-数据库名
+statistic_dbname=2011_statistic_service  # 性能统计-数据库名
+alarm_dbname=2011_alarm_service  # 告警
+devconfig_dbname=2011_devconfig_service  # 设备
+security_dbname=2011_security_service  # 安全管理
+user_dbname=2011_user_service   # 用户
+db_2_name=febs_test  # 未知
+
+#  【微服务名称相关】
+eurekaOrganizationServiceName=$eurekaOrganizationServiceName  # 组织架构4合1 微服务名称
+eurekaSecurityServiceName=$eurekaSecurityServiceName  # 安全管理
+eurekaResourceServiceName=$eurekaResourceServiceName  # 资源管理模块 微服务名称
+eurekaAlarmServiceName=$eurekaAlarmServiceName  # 告警模块 微服务名称
+eurekaDevconfigServiceName=$eurekaDevconfigServiceName # 告警模块 微服务名称
+eurekaEquipmentServiceName=$eurekaEquipmentServiceName  # 设备管理
+eurekaHssProxyServiceName=$eurekaHssProxyServiceName  # hss代理模块 微服务名称
+eurekaUserServiceName=$eurekaUserServiceName  # 用户管理  微服务名称
+eurekaStatisticServiceName=$eurekaStatisticServiceName  # 性能统计 微服务名称
+eurekaMonitorServiceName=$eurekaMonitorServiceName  # Monitor 微服务名称
+eurekaNeServiceName=$eurekaNeServiceName  # Ne 微服务名称
+eurekaNorthServiceName=$eurekaNorthServiceName  # north 微服务名称
+eurekaTopologyServiceName=$eurekaTopologyServiceName  # 拓扑管理 微服务名称
+
+# 【网管级别相关】
+local_nms_unitid=1  # 本机组织单位id
+superior_nms_level=1  # 上级网管层级
+
+# 【ftp相关】
+ftpUsername=root  # ftp 登录用户名
+ftpPassword=123456  # ftp 登录密码
+
+# 【其它】
+nmsCfgFolderPath=$nmsCfgFolderPath
+
+
+
+
+
+
+
+
+
+
+
+
+
+

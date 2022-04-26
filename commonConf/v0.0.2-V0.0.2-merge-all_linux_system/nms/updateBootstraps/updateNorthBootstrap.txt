@@ -1,0 +1,15 @@
+# 固定格式
+# 脚本自定义配置 绝对路径
+customShellCfgAbsPath=$projectPath/installPackages/commonConf/v0.0.2-V0.0.2-merge-all_linux_system/nms/updateBootstraps/updateNorthBootstrap.txt
+
+# 实际要修改的软件配置 - 镜像配置(脚本自定义的) 绝对路径，如nms
+customSoftwareCfgAbsPath=$projectPath/installPackages/commonConf/v0.0.2-V0.0.2-merge-all_linux_system/nms/updateBootstraps/bootstraps/bootstrap-north.yml
+
+# 实际要修改的软件配置 绝对路径 
+dstFileAbsPath=$projectPath/nms/backend/sun-nms-north-service/bootstrap.yml
+
+# 实际要修改的变量 key=value 形式
+eurekaName=north-service
+microIp=micro.com
+eurekaConfigPort=7010
+cfgName=north

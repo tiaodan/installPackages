@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    config:
+      enabled: true
+      name: application
+      #uri: http://config.com:4001
+      uri: http://config.com:config_port
+      profile: resource-aj03

@@ -1,0 +1,27 @@
+# 这里写要更新的配置
+# 本地ip
+localIp=$localIp
+
+# 微服务ip
+microIp=$microIp
+
+# 调度台ip
+icssIp=$icssIp
+
+# 网管Ip
+nmsIp=$nmsIp
+
+# emq Ip
+emqIp=$emqIp
+
+# 交换ip
+switchIp=$switchIp
+
+# 调度台前端目录
+icssFrontPath=$icssFrontPath
+
+# nms前端目录
+nmsFrontPath=$nmsFrontPath
+
+# 地图路径
+mapPath=$mapInstallPath
