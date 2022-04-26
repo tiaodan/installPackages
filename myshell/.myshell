@@ -1,0 +1,160 @@
+	
+	alias ahelp="ahelpFun"
+	alias asource='source ~/.bashrc'
+	alias acheck='/home/checkService'
+	alias acdmyshell='cd /home/2011/basesoftware/installShell'
+	alias avimyshell='cd /home/2011/basesoftware/installShell;vi install.sh'
+	alias avibashrc='vi ~/.bashrc'
+	alias ahis='history'
+	alias adf='df -h /'	
+	##查询
+	alias aps='ps -ef|grep '
+	alias anet='netstat -anp|grep '
+	
+	##切换主要目录
+	alias acd='cd /home/2011'
+	alias acdpreject='cd /home/2011'
+	alias acdicss='cd /home/2011/disp'
+	alias acdicsscfg='cd /home/2011/disp/dist/static'	
+	alias acdnms='cd /home/2011/nms/backend'
+	alias acdgate='cd /home/2011/gateway'
+	alias acduser-omc='cd /home/2011/gateway/user-omc-service-0.0.1-SNAPSHOT/'
+	alias acdnmsfront='cd /home/2011/nms/front'
+	alias acdnmsmicro='cd /home/2011/micro'
+	alias acdmap='cd /home/2011/googlemaps'	
+	alias acddatacenter='cd /home/2011/datacenter/backend'
+	alias acddatacenter_front='cd /home/2011/datacenter/front'
+	alias acddatacenter_org='cd /home/2011/datacenter/backend/sun-nms-organization-server'
+	alias acddatacenter_user='cd /home/2011/datacenter/backend/sun-nms-user-service'
+	alias acddatacenter_alarm='cd /home/2011/datacenter/backend/sun-nms-alarm-service'
+	alias acddatacenter_security='cd /home/2011/datacenter/backend/sun-nms-security-service'
+	alias acdnms_org='cd /home/2011/nms/backend/sun-nms-organization-server'
+	alias acdnms_security='cd /home/2011/nms/backend/sun-nms-security-service'
+	alias acdnms_user='cd /home/2011/nms/backend/sun-nms-user-service'
+	alias acdnms_alarm='cd /home/2011/nms/backend/sun-nms-alarm-service'
+	alias acdnms_resource='cd /home/2011/nms/backend/sun-nms-resource-service'
+	alias acdnms_statistic='cd /home/2011/nms/backend/sun-nms-statistic-service'
+	alias acdnginxcfg='cd /usr/local/nginx/conf'
+	alias acdnmsconfig='cd /home/2011/micro/sun-nms-config-server/config'
+	alias acdgroup='oamcd group'
+	alias acdwebrtc='oamcd webrtc'
+	alias acdpre='oamcd presence'
+	alias acdim='oamcd imserver'
+	alias acddcsg='oamcd dcsg'
+	alias acddds='oamcd dds'
+	alias acdagw='oamcd agw'
+	
+	##编辑
+	alias avinginxcfg='vi /usr/local/nginx/conf/nginx.conf'
+	alias avialarm_nms='acdnmsconfig;vi application-alarm-1808.yml '
+	alias avialarm_datacenter='acdnmsconfig;vi application-alarm-2011.yml '
+	alias aviorg_nms='acdnmsconfig;vi application-organization-1808.yml '
+	alias aviorg_datacenter='acdnmsconfig;vi application-organization-2011.yml '
+	alias aviresource_nms='acdnmsconfig;vi application-resource-1808.yml '
+	alias aviresource_datacenter='acdnmsconfig;vi application-resource-2011.yml '
+	alias avistatistic_nms='acdnmsconfig;vi application-statistic-1808.yml '
+	alias avistatistic_datacenter='acdnmsconfig;vi application-statistic-2011.yml '
+	alias avitopology_nms='acdnmsconfig;vi application-topology-1808.yml '
+	alias avitopology_datacenter='acdnmsconfig;vi application-topology-2011.yml '
+	alias aviuser_nms='acdnmsconfig;vi application-user-1808.yml '
+	alias aviuser_datacenter='acdnmsconfig;vi application-user-2011.yml '
+	alias avisecurity_nms='acdnmsconfig;vi zuul-config-1808.yml '
+	alias avisecurity_datacenter='acdnmsconfig;vi zuul-config-2011.yml '
+	
+	##打印日志
+		#调度台
+	alias atailgroup_d='oamcd group;tail -f logs/group_debug.log'
+	alias atailgroup_d_grep='oamcd group;tail -f logs/group_debug.log | grep '
+	alias atailgroup_w='oamcd group;tail -f logs/group_warn.log'
+	alias atailwebrtc_d='oamcd webrtc;tail -f logs/webrtc_debug.log'
+	alias atailwebrtc_d_grep='oamcd webrtc;tail -f logs/webrtc_debug.log | grep '
+	alias atailwebrtc_w='oamcd webrtc;tail -f logs/webrtc_warn.log'
+	alias atailim_d='oamcd ims;tail -f logs/imserver_debug.log'
+	alias atailim_d_grep='oamcd ims;tail -f logs/imserver_debug.log | grep '
+	alias atailim_w='oamcd ims;tail -f logs/imserver_warn.log'
+	alias atailpre_d='oamcd presence;tail -f logs/presence_debug.log'
+	alias atailpre_d_grep='oamcd presence;tail -f logs/presence_debug.log | grep '
+	alias atailpre_w='oamcd presence;tail -f logs/presence_warn.log'
+	alias ataildcsg_d='oamcd dcsg;tail -f logs/dcsgxcapproxy_debug.log'
+	alias ataildcsg_d_grep='oamcd dcsg;tail -f logs/dcsgxcapproxy_debug.log | grep '
+	alias ataildcsg_w='oamcd dcsg;tail -f logs/dcsgxcapproxy_warn.log'
+	alias ataildds_d='oamcd dds;tail -f logs/dds_debug.log'
+	alias ataildds_d_grep='oamcd dds;tail -f logs/dds_debug.log | grep '
+	alias ataildds_w='oamcd dds;tail -f logs/dds_warn.log'
+	alias atailagw_d='oamcd agw;tail -f logs/agw_debug.log'
+	alias atailagw_d_grep='oamcd agw;tail -f logs/agw_debug.log | grep '
+	alias atailagw_w='oamcd agw;tail -f logs/agw_warn.log'
+		#网管,没写数据中心，就认为是网管路径
+	alias atailuser-omc_d='acduser-omc;tail -f logs/debug.log'
+	alias atailuser-omc_e='acduser-omc;tail -f logs/error.log'
+	alias ataildatacenter_org_d='acddatacenter_org;tail -f logs/debug.log'
+	alias ataildatacenter_org_e='acddatacenter_org;tail -f logs/error.log'
+	alias ataildatacenter_user_d='acddatacenter_user;tail -f logs/debug.log'
+	alias ataildatacenter_user_e='acddatacenter_user;tail -f logs/error.log'
+	alias ataildatacenter_alarm_d='acddatacenter_alarm;tail -f logs/debug.log'
+	alias ataildatacenter_alarm_e='acddatacenter_user;tail -f logs/error.log'
+	alias ataildatacenter_security_d='acddatacenter_security;tail -f logs/debug.log'
+	alias ataildatacenter_security_e='acddatacenter_security;tail -f logs/error.log'
+	alias atailnms_org_d='acdnms_org;tail -f logs/debug.log'
+	alias atailnms_org_e='acdnms_org;tail -f logs/error.log'
+	alias atailnms_user_d='acdnms_user;tail -f logs/debug.log'
+	alias atailnms_user_e='acdnms_user;tail -f logs/error.log'
+	alias atailnms_alarm_d='acdnms_alarm;tail -f logs/debug.log'
+	alias atailnms_alarm_e='acdnms_user;tail -f logs/error.log'
+	alias atailnms_security_d='acdnms_security;tail -f logs/debug.log'
+	alias atailnms_security_e='acdnms_security;tail -f logs/error.log'
+	alias atailnms_resource_d='acdnms_resource;tail -f logs/debug.log'
+	alias atailnms_resource_e='acdnms_resource;tail -f logs/error.log'
+	alias atailnms_statistic_d='acdnms_statistic;tail -f logs/debug.log'
+	alias atailnms_statistic_e='acdnms_statistic;tail -f logs/error.log'
+	
+##ahelp提示
+function ahelpFun(){
+	echo "====1808项目===基础命令====="
+	echo -e "\033[47;31m ahelp --> 查询所有帮助命令 \033[0m" #黑底绿字
+	echo -e "\033[47;31m asource --> 重新应用bash配置文件 \033[0m" #黑底绿字
+	echo -e "\033[47;31m acheck --> 使用home下检查服务脚本 \033[0m" #黑底绿字
+	echo -e "\033[47;31m acdmyshell --> 切换到目录：自定义 快捷命令 配置文件 \033[0m" #黑底绿字
+	echo -e "\033[47;31m avimyshell --> 修改自定义 快捷命令 配置文件 \033[0m" #黑底绿字
+	echo -e "\033[47;31m avibashrc --> 修改bashrc配置文件 \033[0m" #黑底绿字
+	echo -e "\033[47;31m acdpreject --> 切换到项目路径 \033[0m" #黑底绿字
+	echo -e "\033[47;31m acdicss --> 切换到调度台前端路径 \033[0m" #黑底绿字
+	echo -e "\033[47;31m acdgate --> 切换到网管 gateway(有omc服务)路径 \033[0m" #黑底绿字
+	echo -e "\033[47;31m acdnmsfront --> 切换到网管前端路径 \033[0m" #黑底绿字
+	echo -e "\033[47;31m acdnmsmicro --> 切换到网管后台路径 \033[0m" #黑底绿字
+
+	echo -e ""
+	echo "====1808项目===调度台相关====="
+	echo -e "\033[47;31m acdgroup --> 切换到群组 \033[0m" #黑底绿字
+	echo -e "\033[47;31m acdwebrtc --> 切换到webrtc(媒体服务器) \033[0m" #黑底绿字
+	echo -e "\033[47;31m acdpre --> 切换到呈现服务器 \033[0m" #黑底绿字
+	echo -e "\033[47;31m acdim --> 切换到 短信服务器 \033[0m" #黑底绿字
+	echo -e "\033[47;31m acddcsg --> 切换到dcsg \033[0m" #黑底绿字
+	echo -e "\033[47;31m acddds --> 切换到 dds \033[0m" #黑底绿字
+	echo -e "\033[47;31m acdagw --> 切换到 agw \033[0m" #黑底绿字
+	echo -e ""
+	echo -e "\033[47;31m atailgroup_d --> 打印群组 debug日志 \033[0m" #黑底绿字
+	echo -e "\033[47;31m atailgroup_w --> 打印群组 warn日志 \033[0m" #黑底绿字
+	echo -e "\033[47;31m atailwebrtc_d --> 打印媒体服务器 debug日志 \033[0m" #黑底绿字
+	echo -e "\033[47;31m atailwebrtc_w --> 打印媒体服务器 warn日志 \033[0m" #黑底绿字
+	echo -e "\033[47;31m atailim_d --> 打印短信服务器 debug日志 \033[0m" #黑底绿字
+	echo -e "\033[47;31m atailim_w --> 打印短信服务器 warn日志 \033[0m" #黑底绿字
+	echo -e "\033[47;31m atailpre_d --> 打印呈现 debug日志 \033[0m" #黑底绿字
+	echo -e "\033[47;31m atailpre_w --> 打印呈现 warn日志 \033[0m" #黑底绿字
+	echo -e "\033[47;31m ataildcsg_d --> 打印dcsg debug日志 \033[0m" #黑底绿字
+	echo -e "\033[47;31m ataildcsg_w --> 打印dcsg warn日志 \033[0m" #黑底绿字
+	echo -e "\033[47;31m ataildds_d --> 打印dds debug日志 \033[0m" #黑底绿字
+	echo -e "\033[47;31m ataildds_w --> 打印dds warn日志 \033[0m" #黑底绿字
+	echo -e "\033[47;31m atailagw_d --> 打印agw debug日志 \033[0m" #黑底绿字
+	echo -e "\033[47;31m atailagw_w --> 打印agw warn日志 \033[0m" #黑底绿字
+	echo -e ""
+	
+	echo "====1808项目===网管相关====="
+	echo -e "\033[47;31m atailorg_d --> 打印 组织机构 debug日志 \033[0m" #黑底绿字
+	echo -e "\033[47;31m atailorg_e --> 打印 组织机构 error日志 \033[0m" #黑底绿字
+	echo -e "\033[47;31m atailuser_d --> 打印 “用户管理模块” debug日志 \033[0m" #黑底绿字
+	echo -e "\033[47;31m atailuser_e --> 打印 “用户管理模块” error日志 \033[0m" #黑底绿字
+	echo -e "\033[47;31m atailomc_d --> 打印 omc debug日志 \033[0m" #黑底绿字
+	echo -e "\033[47;31m atailomc_e --> 打印 omc error日志 \033[0m" #黑底绿字
+}
+
