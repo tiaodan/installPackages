@@ -1,21 +1,26 @@
-.idea
-.git
+# git相关
+/.idea
+/.git
 
 # 项目相关 /只针对根目录
+/project
 /0203
 /aj
 /aj-jds
 
 # 系统相关
+/system
 /centos7
 /centos8
 /kylin
 /kylin-x86
 
 # 软件相关
+/software
 /disp
 /gateway
 /map
 /micro
 /nms
 /tomcat
+mysql210917.sql
