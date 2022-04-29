@@ -1,1 +1,15 @@
 # ignore
+# git相关
+/.git
+/.idea
+
+# 系统相关
+/system
+/centos7
+/centos8
+/kylin
+/kylin-x86
+
+# 项目相关
+
+# 软件相关
