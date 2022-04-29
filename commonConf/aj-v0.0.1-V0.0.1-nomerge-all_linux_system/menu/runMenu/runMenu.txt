@@ -1,0 +1,28 @@
+\n
+1. 停止nginx\n
+2. 重启nginx\n
+3. 停止redis\n
+4. 重启redis\n
+5. 停止mysql\n
+6. 重启mysql\n
+7. 停止emqx\n
+8. 重启emqx\n
+9. 停止微服务\n
+10. 重启微服务\n
+11. 停止网管\n
+12. 重启网管 (微服务启动1分钟后，启动)\n
+13. 停止网管gateway\n
+14. 重启网管gateway(任何时间均可启动)\n
+15. 停止调度软件\n
+16. 重启调度软件(网管启动6分钟后，启动)\n
+17. 停止KMS\n
+18. 重启KMS\n
+19. 停止recording\n
+20. 重启recording\n
+21. 停止 emqx 桥接\n
+22. 重启 emqx 桥接\n
+23. 重启 tomcat\n
+24. 停止 activemq\n
+25. 重启 activemq\n
+\n
+回车返回上一级\n

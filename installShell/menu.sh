@@ -203,6 +203,10 @@ function installMenu(){
         # 30. 安装 java
         installJDK
         ;;
+    33)
+        # 30. 安装 activemq
+        installActivemq
+        ;;
 	esac
 
 }
@@ -312,6 +316,14 @@ function runMenu(){
     23)
         # echo "22. 重启 tomcat"
 		restartTomcat
+		;;
+    24)
+        # echo "24. 停止 activemq"
+		stopActivemq
+		;;
+    25)
+        # echo "25. 重启 activemq"
+		restartActivemq
 		;;
 	esac
 

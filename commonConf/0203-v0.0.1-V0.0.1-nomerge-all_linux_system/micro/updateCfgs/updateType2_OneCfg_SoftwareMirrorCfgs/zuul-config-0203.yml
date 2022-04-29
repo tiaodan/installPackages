@@ -1,0 +1,364 @@
+#   : 号和 数值之间要有空格 如： port: 9527
+server:
+  port: 7300
+#security:
+#  basic:
+#    enabled: true
+#    path: /swagger-ui.html
+#  user:
+#    name: admin
+#    password: admin
+cron-task-time: '*/30 * * * * ?'
+spring:
+  application:
+    name: oss-security-service
+  autoconfigure: #排除原生Druid的快速配置类。
+    exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure
+  datasource:
+    dynamic:
+      # 是否开启 SQL日志输出，生产环境建议关闭，有性能损耗
+      p6spy: true
+      hikari:
+        connection-timeout: 30000
+        max-lifetime: 1800000
+        max-pool-size: 15
+        min-idle: 5
+        connection-test-query: select 1
+        pool-name: SunkHikariCP
+      # 配置默认数据源
+      primary: primary
+      datasource:
+        # 数据源-1，名称为 primary
+        primary:
+          username: root
+          password: sunkaisens
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://mysql.com:3306/0203_security_service?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
+        # 数据源-2，名称为 test
+#        test:
+#          username: root
+#          password: 123456
+#          driver-class-name: com.mysql.cj.jdbc.Driver
+#          url: jdbc:mysql://127.0.0.1:3306/febs_test?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+  aop:
+    proxy-target-class: true
+
+  messages:
+    encoding: utf-8
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+  redis:
+    host: redis.com
+    port: 6381
+    password: 
+    jedis:
+      pool:
+        min-idle: 8
+        max-idle: 500
+        max-active: 2000
+        max-wait: 10000
+    timeout: 0
+  mqtt:
+    host: "tcp://emqtt.com:1883"
+    clientId: ${spring.application.name}
+    topic: "/topic1"
+    username: admin
+    password: password
+    timeout: 30
+    keepAlive: 60
+
+
+#mybatis plus 设置
+mybatis-plus:
+  type-aliases-package: com.sunkaisens.ibss.system.domain
+  mapper-locations: classpath:mapper/*/*.xml
+  configuration:
+    jdbc-type-for-null: null
+  global-config:
+    # 关闭 mybatis-plus的 banner
+    banner: false
+
+pagehelper:
+  helperDialect: oracle
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+      health:
+        show-details: ALWAYS
+  info:
+    git:
+      mode: full
+ibss:
+  # 是否异步记录用户操作日志
+  openAopLog: true
+  shiro:
+    # 后端免认证接口 url, 逗号后前后不要有空格或tab等。
+#    anonUrl: /login,/logout/**,/regist,/user/check/**,/eureka/**,/log/share/**,/access-network/**
+    anonUrl: /api/login,/api/logout/**,/api/regist,/api/user/check/**,/api/eureka/**,/api/log/share/**,/api/access-network/**,/login,/logout/**,/regist,/user/check/**,/eureka/**,/log/share/**,/access-network/**,/api/hss/tt-users,/hss/tt-users
+
+
+#,/api/oss-resource-service/**,/api/oss-alarm-service/**
+#,/antijam-1/**,/frequency-conversion-1/**,/antenna-1/**,/clock-1/**,/emergency-1/**,/antijam-1/**,/trunked-1/**,/frequency-conversion-2/**,/antenna-2/**,/clock-2/**,/emergency-2/**,/antijam-2/**,/trunked-2/**,/frequency-conversion-3/**,/antenna-3/**,/clock-3/**,/emergency-3/**,/antijam-3/**,/trunked-3/**
+    # token有效期，单位秒
+    jwtTimeOut: 2592000
+    # 更新令牌时间检查配置，多少秒刷新一次     单位 ：秒
+    refreshCheckTime: 43200
+  #ip转化为地域  
+  ip2region:
+    enabled: false
+  # 单次最大批量入库数量
+  max:
+    batch:
+      insert:
+        num: 1000
+swagger:
+  enable: true  
+
+eureka: 
+  enabled: true
+  client: 
+    service-url: 
+      defaultZone: http://eureka.com:7000/eureka,http://eureka.com:7001:/eureka
+  instance:
+    instance-id: ${spring.application.name}-${server.port}
+    prefer-ip-address: true 
+  
+zuul: 
+  host:
+    # 以下两条为zuul超时配置
+    connect-timeout-millis: 600000
+    socket-timeout-millis: 600000
+  prefix: /api
+  ignored-services: "*"
+  strip-prefix: false
+  routes:
+    user:
+      serviceId: oss-user-service
+      path: /oss-user-service/**
+    alarm:
+      serviceId: oss-alarm-service
+      path: /oss-alarm-service/**
+    resource:
+      serviceId: oss-resource-service
+      path: /oss-resource-service/**
+    statistic:
+      serviceId: oss-statistic-service
+      path: /oss-statistic-service/**
+    devconfig:
+      serviceId: oss-devconfig-service
+      path: /oss-devconfig-service/**
+    gmapsystem:
+      serviceId: oss-gmapsystem-service 
+      path: /oss-gmapsystem-service/**
+    organization:
+      serviceId: oss-organization-service
+      path: /oss-organization-service/**
+    ne:
+      serviceId: oss-nms-ne-service
+      path: /oss-nms-ne-service/**
+    auxiliary-power-supply:
+      serviceId: auxiliary-power-supply
+      path: /auxiliary-power-supply/auxiliary-power-supply/**
+      strip-prefix: false
+    network-device:
+      serviceId: network-device
+      path: /network-device/network-device/**
+      strip-prefix: false
+    monitor: 
+      serviceId: oss-monitor-service
+      path: /oss-monitor-service/**
+    provider-config-2:
+      serviceId: provider-config-2
+      path: /access-network/general/provider-config/**
+      strip-prefix: false
+    provider-resource-2:
+      serviceId: provider-resource-2
+      path: /access-network/general/provider-resource/**
+      strip-prefix: false
+    provider-interfere-2:
+      serviceId: provider-interfere-2
+      path: /access-network/general/provider-interfere/**
+      strip-prefix: false
+#接入网1
+    frequency-conversion-1:
+      serviceId: frequency-conversion-1
+      path: /access-network/1/frequency-conversion/**
+      strip-prefix: false
+    clock-1:
+      serviceId: clock-1
+      path: /access-network/1/clock/**
+      strip-prefix: false
+    antenna-1:
+      serviceId: antenna-1
+      path: /access-network/1/antenna/**
+      strip-prefix: false
+    emergency-1:
+      serviceId: emergency-1
+      path: /access-network/1/emergency/**
+      strip-prefix: false
+    antijam-1:
+      serviceId: antijam-1
+      path: /access-network/1/antijam/**
+      strip-prefix: false
+    provider-device-1:
+      serviceId: provider-device-1
+      path: /access-network/1/general/provider-device/**
+      strip-prefix: false
+    provider-alarm-1:
+      serviceId: provider-alarm-1
+      path: /access-network/1/general/provider-alarm/**
+      strip-prefix: false
+    provider-perform-1:
+      serviceId: provider-perform-1
+      path: /access-network/1/general/provider-perform/**
+      strip-prefix: false
+    trunked-1:
+      serviceId: trunked-1
+      path: /access-network/1/trunked/**
+      strip-prefix: false
+    tmg-1:
+      serviceId: tmg-1
+      path: /core-network/1/tmg/**
+      strip-prefix: false
+    secret-1:
+       serviceId: trunked-1
+       path: /access-network/1/secret/**
+       strip-prefix: false
+      
+#接入网2
+    frequency-conversion-2:
+      serviceId: frequency-conversion-2
+      path: /access-network/2/frequency-conversion/**
+      strip-prefix: false
+    clock-2:
+      serviceId: clock-2
+      path: /access-network/2/clock/**
+      strip-prefix: false
+    antenna-2:
+      serviceId: antenna-2
+      path: /access-network/2/antenna/**
+      strip-prefix: false
+    emergency-2:
+      serviceId: emergency-2
+      path: /access-network/2/emergency/**
+      strip-prefix: false
+    antijam-2:
+      serviceId: antijam-2
+      path: /access-network/2/antijam/**
+      strip-prefix: false
+    provider-device-2:
+      serviceId: provider-device-2
+      path: /access-network/2/general/provider-device/**
+      strip-prefix: false
+    provider-alarm-2:
+      serviceId: provider-alarm-2
+      path: /access-network/2/general/provider-alarm/**
+      strip-prefix: false
+    provider-perform-2:
+      serviceId: provider-perform-2
+      path: /access-network/2/general/provider-perform/**
+      strip-prefix: false
+    provider-broadcast-2:
+      serviceId: provider-broadcast-2
+      path: /access-network/2/general/provider-broadcast-2/**
+      strip-prefix: false
+    provider-netelement-2:
+      serviceId: provider-netelement-2
+      path: /access-network/2/general/provider-netelement/**
+      strip-prefix: false
+    provider-log-2:
+      serviceId: provider-log-2
+      path: /access-network/2/general/provider-log/**
+      strip-prefix: false
+    trunked-2:
+      serviceId: trunked-2
+      path: /access-network/2/trunked/**
+      strip-prefix: false
+    tmg-2:
+      serviceId: tmg-2
+      path: /core-network/2/tmg/**
+      strip-prefix: false
+    secret-2:
+       serviceId: trunked-2
+       path: /access-network/2/secret/**
+       strip-prefix: false
+#接入网3
+    frequency-conversion-3:
+      serviceId: frequency-conversion-3
+      path: /access-network/3/frequency-conversion/**
+      strip-prefix: false
+    clock-3: 
+      path: /access-network/3/clock/**
+      strip-prefix: false
+    antenna-3:
+      serviceId: antenna-3
+      path: /access-network/3/antenna/**
+      strip-prefix: false
+    emergency-3:
+      serviceId: emergency-3
+      path: /access-network/3/emergency/**
+      strip-prefix: false
+    antijam-3:
+      serviceId: antijam-3
+      path: /access-network/3/antijam/**
+      strip-prefix: false
+    provider-device-3:
+      serviceId: provider-device-3
+      path: /access-network/3/general/provider-device/**
+      strip-prefix: false
+    provider-alarm-3:
+      serviceId: provider-alarm-3
+      path: /access-network/3/general/provider-alarm/**
+      strip-prefix: false
+    provider-perform-3:
+      serviceId: provider-perform-3
+      path: /access-network/3/general/provider-perform/**
+      strip-prefix: false
+    provider-broadcast-3:
+      serviceId: provider-broadcast-3
+      path: /access-network/3/general/provider-broadcast-3/**
+      strip-prefix: false
+    provider-netelement-3:
+      serviceId: provider-netelement-3
+      path: /access-network/3/general/provider-netelement/**
+      strip-prefix: false
+    provider-log-3:
+      serviceId: provider-log-3
+      path: /access-network/3/general/provider-log/**
+      strip-prefix: false
+    trunked-3:
+      serviceId: trunked-3
+      strip-prefix: false
+      path: /access-network/3/trunked/**
+    secret-3:
+       serviceId: trunked-3
+       path: /access-network/3/secret/**
+       strip-prefix: false
+ribbon:
+  eureka:
+    enabled: true
+  ReadTimeout: 600000
+  ConnectTimeout: 600000
+    
+info:
+  app.name: ${spring.application.name}
+  company.name: www.sunkaisens.com
+
+feign-service:
+  log: oss-security-service
+  organization: oss-organization-service
+  alarm:  oss-alarm-service
+
+logging:
+  config: log4j2-spring.xml
+

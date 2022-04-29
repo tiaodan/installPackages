@@ -1,0 +1,5 @@
+#!/bin/bash 
+# 同步时间
+/usr/sbin/ntpdate ntpServerIp
+hwclock -w
+

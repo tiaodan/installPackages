@@ -1,0 +1,27 @@
+# 固定格式
+# 脚本自定义配置 绝对路径
+customShellCfgAbsPath=$projectPath/installPackages/commonConf/v0.0.2-V0.0.2-merge-all_linux_system/disp-front/updateCfgs/updateType1_OneByOne_CustomCfgs/updateDispConfig.txt
+
+# 实际要修改的软件配置 - 镜像配置(脚本自定义的) 绝对路径，如nms
+customSoftwareCfgAbsPath1=$projectPath/installPackages/commonConf/v0.0.2-V0.0.2-merge-all_linux_system/disp-front/updateCfgs/updateType2_OneCfg_SoftwareMirrorCfgs/config-googlemap.js
+
+# 实际要修改的软件配置 绝对路径
+dstFileAbsPath1=$projectPath/disp/dist/static/config.js
+
+# 实际要修改的变量 key=value 形式
+# 【ip相关】
+dispIp=$icssIp  # 调度ip
+defaultPassword=123456  # 功能配置密码，可修改
+phonePrefix=$grouCallpPrefix  # 号码前缀
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,66 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 kylinos
+
+switchIp mp.test.com
+switchIp ggsn.test.com
+switchIp hss.test.com
+switchIp mgc.test.com
+switchIp pcscf.test.com
+switchIp scscf.test.com
+switchIp cscf.test.com
+switchIp sipgw.test.com
+switchIp smsc.test.com
+switchIp vdcsg.test.com
+switchIp vcs.test.com
+switchIp pgw.test.com
+switchIp vmonitor.test.com
+switchIp gcsg.test.com
+icssIp appserver.test.com
+icssIp gis.test.com
+switchIp epc.test.com
+switchIp mme.test.com
+localIp oam.localhost.test.com
+switchIp pri.ntp.test.com
+switchIp sec.ntp.test.com
+switchIp ntp.test.com
+switchIp ntn.test.com
+switchIp sa.test.com
+switchIp com.test.sipstack
+switchIp cc.test.com
+switchIp lz.test.com
+switchIp pdt.test.com
+switchIp nusm.test.com
+
+icssIp  test.com
+nmsIp  omc.test.com
+microIp  eureka.com
+microIp  eureka-200.com
+microIp  eureka-211.com
+microIp  config.com
+redisIp  mysql.com
+redisIp mysql_v.com
+emqIp  emqtt.com
+emqIp  activemq.com
+redisIp  redis.com
+nmsIp  canal.com
+nmsIp  gateway.com
+nmsIp  user-omc.com
+nmsIp  myomc.com
+nmsIp  mycat
+nmsIp sms.com
+icssIp group.com
+
+upLevelNmsIp datacenter.com
+upLevelNmsIp dataCenter.com
+switchIp hss.com
+switchIp north.com
+
+icssIp icss.com
+dispIp disp.com
+nmsIp nms.com
+switchIp switch.com
+microIp micro.com
+upLevelNmsIp superior.nms.com
+upLevelNmsIp north2other.nms.com
+northEmqxIp superior.mqtt.com
+superiorMicroIp superior.micro.com
+localIp oam.remote.com

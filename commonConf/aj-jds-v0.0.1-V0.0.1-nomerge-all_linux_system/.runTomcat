@@ -1,0 +1,13 @@
+#!/bin/bash 
+# 启动 Tomcat
+echo "Tomcat 自启动》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》 start"
+echo "`(date +"%Y-%m-%d %H:%M:%S")` Tomcat 自启动》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》 start" >> "/root/run-`(date +%Y%m%d)`.log"
+
+
+cd /usr/share/tomcat/bin/
+chmod +x  startup.sh
+chmod 777 *.*
+./startup.sh
+
+echo "Tomcat 自启动》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》 end"
+echo "`(date +"%Y-%m-%d %H:%M:%S")` Tomcat 自启动》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》 end" >> "/root/run-`(date +%Y%m%d)`.log"

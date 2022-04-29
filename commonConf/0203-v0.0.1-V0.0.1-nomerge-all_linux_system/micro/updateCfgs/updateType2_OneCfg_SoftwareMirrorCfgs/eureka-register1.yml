@@ -1,12 +1,31 @@
 server: 
-  port: micro_port1
+  port: 7000
   
 eureka: 
   instance:
-    hostname: register-micro_port1 #eureka服务端的实例名称
+    hostname: register-7000 #eureka服务端的实例名称
+    # 过期时间，默认90s, 可不配置
+    lease-expiration-duration-in-seconds: 30
+    # 续约时间，默认30s，可不配置
+    lease-renewal-interval-in-seconds: 10
+    # ip地址优先
+    prefer-ip-address: true
+
+  server:
+    # 关闭注册中心自我保护模式，避免注册中心不移除失效的服务，默认为true
+    enable-self-preservation: false
+    # 去除失效服务的时间间隔（毫秒）
+    eviction-interval-timer-in-ms: 4000
+
   client: 
-    register-with-eureka: false     #false表示不向注册中心注册自己。
-    fetch-registry: false     #false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务
+    # 启用eureka客户端，默认为true, 可不配置
+    enabled: true
+    # false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要去检索服务
+    fetch-registry: false
+    # 两个心跳参数，默认都是30s,可不配置
+    instance-info-replication-interval-seconds: 30
+    registry-fetch-interval-seconds: 30
+    # 注册到注册中心，默认为true,可不配置
+    register-with-eureka: false
     service-url: 
-      #defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/       #设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址（单机）。
-      defaultZone: http://micro_domain:micro_port2/eureka/
+      defaultZone: http://eureka.com:7001/eureka/

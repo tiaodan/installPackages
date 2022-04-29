@@ -37,11 +37,17 @@ function guideUser(){
                 source onekey.cfg
 #                setDefaultVar
                 ;;
+            3)
+                # 0203
+                userChooseProject='0203'
+#                echoN "拷贝0203配置模板"
+                \cp conf_template/onekey-nomerge-v0.0.1-V0.0.1-kylin-x86-0203.cfg onekey.cfg
+                source onekey.cfg
+#                setDefaultVar
+                ;;
         esac
 
         if [ "$projectName" == "2011" ];then
-
-
             #     1. 选择系统类型？1.kylin 2.centos7  --》不选/回车默认按-默认来，目前默认==centos7
             sed -i 's/\r//' $projectPath/installPackages/commonConf/menu/guideUserMenu/chooseSystem.txt
             echoN `cat $projectPath/installPackages/commonConf/menu/guideUserMenu/chooseSystem.txt | grep -v "#"`
@@ -58,6 +64,14 @@ function guideUser(){
                 3)
                     # kylin-x86
                     userChooseSystemVersion='kylin-x86'
+                    ;;
+                4)
+                    # centos8
+                    userChooseSystemVersion='centos8'
+                    ;;
+                *)
+                    # c7
+                    userChooseSystemVersion='centos7'
                     ;;
             esac
 
@@ -934,7 +948,6 @@ function guideUser(){
     fi
 
         if [ "$projectName" == "aj" ];then
-
             #     1. 选择系统类型？  --》不选/回车默认按-默认来，目前默认==centos8
             sed -i 's/\r//' $projectPath/installPackages/commonConf/$versionCfgFolderName/menu/guideUserMenu/chooseSystem.txt
             if [ "$ifShowHiddenFunction" -eq 1 ];then
@@ -1267,12 +1280,24 @@ function guideUser(){
             read -p "请选择序号(系统类型):"  userChooseSystemVersionIndex
             case $userChooseSystemVersionIndex in
                 1)
-                    # c8
+                    # kylin(麒麟
+                    userChooseSystemVersion='kylin'
+                    ;;
+                2)
+                    # centos7
+                    userChooseSystemVersion='centos7'
+                    ;;
+                3)
+                    # kylin-x86
+                    userChooseSystemVersion='kylin-x86'
+                    ;;
+                4)
+                    # centos8
                     userChooseSystemVersion='centos8'
                     ;;
                 *)
-                    # c8
-                    userChooseSystemVersion='centos8'
+                    # c7
+                    userChooseSystemVersion='centos7'
                     ;;
             esac
 

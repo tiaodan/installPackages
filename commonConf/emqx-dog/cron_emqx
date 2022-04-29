@@ -1,0 +1,37 @@
+#!/bin/bash
+# 唯一标识进程
+APP_NAME_ID=emqx
+#emqx桥接使能，1: 开启，0: 关闭
+EMQX_BRIDGE_EN=1
+
+# 获取当前脚本文件路径
+APP_HOME=$(cd "$(dirname "$0")";pwd)
+
+# 日志文件
+LOG_FILE=$APP_HOME/cron.log
+
+#定时任务最小1分钟，为实现10s，需进行6分频。
+for ((i=1; i<=6; i++))
+do
+  process=`ps -ef | grep $APP_NAME_ID | grep -v "cron_emqx.sh" | grep -v "grep" | grep -v "vi"`
+  if [ -n "$process" ]; then
+    pid=`echo $process | awk '{print $2}'`
+    # echo -e $(date +"%Y-%m-%d %T") "\033[32: memqx is running(pid=$pid).\033[0m" >>$LOG_FILE 
+  else
+    echo -e $(date +"%Y-%m-%d %T")"\033[33m: emqx is stopped, will restart...\033[0m" >>$LOG_FILE
+    # 重启emqx，根据实际情况可修改
+    systemctl restart emqx.service
+    echo -e $(date +"%Y-%m-%d %T")"\033[32m: exqx restart successfully." >>$LOG_FILE
+	if [ $EMQX_BRIDGE_EN -eq 1 ]; then
+        # 桥接启动
+        echo -e $(date +"%Y-%m-%d %T")"\033[33m: emqx bridge will restart...\033[0m" >>$LOG_FILE
+        emqx_ctl plugins reload emqx_bridge_mqtt
+        sleep 1
+        emqx_ctl bridges stop aws
+        emqx_ctl bridges start aws
+        echo -e $(date +"%Y-%m-%d %T")"\033[32m: exqx bridge restart successfully." >>$LOG_FILE
+    fi
+    break
+  fi
+  sleep 10
+done

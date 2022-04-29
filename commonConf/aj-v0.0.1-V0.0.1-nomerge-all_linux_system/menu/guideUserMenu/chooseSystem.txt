@@ -1,0 +1,6 @@
+\n
+请选择系统类型? -->不选/回车按默认(centos7)\n
+1. kylin(麒麟)\n
+2. centos7\n
+3. kylin-x86\n
+4. centos8\n

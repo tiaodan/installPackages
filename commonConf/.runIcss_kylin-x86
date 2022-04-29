@@ -1,0 +1,9 @@
+#!/bin/bash 
+# 启动icss，判断是否安装curl
+echo "调度自启动》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》 start"
+echo "`(date +"%Y-%m-%d %H:%M:%S")` 调度自启动》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》 start" >> "/root/run-`(date +%Y%m%d)`.log"
+
+oamBoot &
+
+echo "调度自启动》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》 end"
+echo "`(date +"%Y-%m-%d %H:%M:%S")` 调度自启动》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》 end" >> "/root/run-`(date +%Y%m%d)`.log"

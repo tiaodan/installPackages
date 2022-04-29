@@ -1,0 +1,51 @@
+#!/bin/bash 
+# 启动icss，判断是否安装curl
+echo "调度自启动》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》 start"
+echo "`(date +"%Y-%m-%d %H:%M:%S")` 调度自启动》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》 start" >> "/root/run-`(date +%Y%m%d)`.log"
+
+if [[ -f "/home/2011/installPackages/installShell/onekey.cfg" ]];then
+    source /home/2011/installPackages/installShell/onekey.cfg
+
+    if [[ `curl -V` =~ '7.29.0' ||  `curl -V` =~ '7.47.0' ]];then
+        echo "curl 已安装，检测微服务是否启动？"
+        echo "`(date +"%Y-%m-%d %H:%M:%S")` curl 已安装，检测微服务是否启动？"  >> "/root/run-`(date +%Y%m%d)`.log"
+
+        # 10秒一循环判断,共1分钟
+        for((i=0;i<48;i++));
+        do
+            if [[ `curl $microIp:7000` =~ "html" && `curl $microIp:7001` =~ "html" && `curl $microIp:7010` =~ "timestamp" ]];then
+                echo "微服务端口${microServicePort[@]} 都启动了,可检测网管了！！"
+                echo "`(date +"%Y-%m-%d %H:%M:%S")` 微服务端口${microServicePort[@]} 都启动了,可检测网管了！！" >> "/root/run-`(date +%Y%m%d)`.log"
+                    #if [[ `curl $nmsIp:7125` =~ "timestamp" && `curl $nmsIp:7330` =~ "timestamp" ]];then
+					if [[ `curl $nmsIp:7125` =~ "timestamp" || `curl $nmsIp:7330` =~ "timestamp" || `curl $nmsIp:7350` =~ "timestamp" ]];then
+                        echo "org+user端口 7125 和7330  都启动了,可启动调度了！！"
+                        echo "`(date +"%Y-%m-%d %H:%M:%S")` org+user端口 7125 和7330  都启动了,可启动调度了！" >> "/root/run-`(date +%Y%m%d)`.log"
+                        break
+                    fi
+            else
+                echo "微服务端口${microServicePort[@]} 有没启动的，等待10继续检测。。"
+                echo "`(date +"%Y-%m-%d %H:%M:%S")` 微服务端口${microServicePort[@]} 有没启动的，等待10继续检测。。" >> "/root/run-`(date +%Y%m%d)`.log"
+                sleep 10
+                continue
+            fi
+            if [[ $i -eq 47 ]];then
+                echo "微服务端口${microServicePort[@]} 仍未启动，只能按自启动先启动下网管程序。"
+                echo "`(date +"%Y-%m-%d %H:%M:%S")` 微服务端口${microServicePort[@]} 仍未启动，只能按自启动先启动下网管程序。" >> "/root/run-`(date +%Y%m%d)`.log"
+            fi
+        done
+	else
+		echo "onekey.cfg有，curl 无，以sleep方式启动，不保证100%启动成功"
+		echo "`(date +"%Y-%m-%d %H:%M:%S")` onekey.cfg有，curl 无，以sleep方式启动，不保证100%启动成功"  >> "/root/run-`(date +%Y%m%d)`.log"
+		sleep 480
+    fi
+else
+    echo "onekey.cfg没有，curl 未知，以sleep方式启动，不保证100%启动成功"
+    echo "`(date +"%Y-%m-%d %H:%M:%S")` onekey.cfg没有，curl 未知，以sleep方式启动，不保证100%启动成功"  >> "/root/run-`(date +%Y%m%d)`.log"
+    sleep 480
+fi
+
+
+oamBoot &
+
+echo "调度自启动》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》 end"
+echo "`(date +"%Y-%m-%d %H:%M:%S")` 调度自启动》》》》》》》》》》》》》》》》》》》》》》》》》》》》》》 end" >> "/root/run-`(date +%Y%m%d)`.log"

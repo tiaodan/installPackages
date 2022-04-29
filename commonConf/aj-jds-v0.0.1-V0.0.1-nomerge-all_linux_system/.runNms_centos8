@@ -1,0 +1,20 @@
+#!/bin/bash 
+# 启动nms，判断是否安装curl
+echo "网管自启动》》》》》》》 start"
+echo "`(date +"%Y-%m-%d %H:%M:%S")` 网管自启动》》》》》》》 start" >> "/root/run-`(date +%Y%m%d)`.log"
+
+
+cd /home/aj/nms/backend
+chmod +x runAll.sh
+./runAll.sh start
+sleep 10
+
+cd /home/aj/nms/backend/sun-nms-north-service
+chmod +x location.sh
+./location.sh &
+
+
+
+
+echo "网管自启动》》》》》》》 end"
+echo "`(date +"%Y-%m-%d %H:%M:%S")` 网管自启动》》》》》》》 end" >> "/root/run-`(date +%Y%m%d)`.log"

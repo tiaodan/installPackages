@@ -635,6 +635,74 @@ function crateProjectFolder(){
             fi
         done < $createFolderCfgPath
     fi
+
+    if [ "$projectName" == "0203" ];then
+        # echoR "创建aj文件夹"
+        sed -i 's/\r//' $createFolderCfgPath
+        # 脚本将开关置为true
+#        sed -i "s/^isCreateBaseFolder.*/isCreateBaseFolder=true/g" $createFolderCfgPath
+#        sed -i "s/^isCreateMicroFolder.*/isCreateMicroFolder=true/g" $createFolderCfgPath
+#        sed -i "s/^isCreateNmsFolder.*/isCreateNmsFolder=true/g" $createFolderCfgPath
+#        sed -i "s/^isCreateDispFolder.*/isCreateDispFolder=true/g" $createFolderCfgPath
+#        sed -i "s/^isCreateMapFolder.*/isCreateMapFolder=true/g" $createFolderCfgPath
+#        sed -i "s/^isCreateLibCommonFolder.*/isCreateLibCommonFolder=true/g" $createFolderCfgPath
+
+        local isCreateBaseFolder=`cat $createFolderCfgPath | grep isCreateBaseFolder | awk -F '=' '{print $2}'`
+        local isCreateMicroFolder=`cat $createFolderCfgPath | grep isCreateMicroFolder | awk -F '=' '{print $2}'`
+        local isCreateNmsFolder=`cat $createFolderCfgPath | grep isCreateNmsFolder | awk -F '=' '{print $2}'`
+        local isCreateDispFolder=`cat $createFolderCfgPath | grep isCreateDispFolder | awk -F '=' '{print $2}'`
+        local isCreateMapFolder=`cat $createFolderCfgPath | grep isCreateMapFolder | awk -F '=' '{print $2}'`
+        local isCreateLibCommonFolder=`cat $createFolderCfgPath | grep isCreateLibCommonFolder | awk -F '=' '{print $2}'`
+
+
+        while read line || [[ -n ${line} ]]
+        do
+            if [[ $line =~ ^#.* ]];then
+    #            echoE "line= $line"
+    #            echoE "此行注释开头，不读取此行"
+                continue
+            fi
+
+            k=${line%=*}  # =前
+            v=${line#*=}  # =后
+            v=`eval echo ${v%#*}`  # 去掉空格
+    #        v=`echo $line | grep -Eo "={.*}#"`  # =后 # 之前, 不好用，仍然会前后字符串
+    #        echoE "k+v===== $k: $v"
+            if [[ -z "$k" || "$k" == "" ]];then
+                continue
+            fi
+
+            if [[ $k =~ 'createBaseFolder' && $k != 'isCreateBaseFolder' && ! -d "$v" ]];then
+                echoN "创建 项目基础 文件夹 $v"
+                mkdir -vp $v
+            fi
+
+            if [[ "$isCreateMicroFolder" == "true" && $k =~ 'createMicroFolder' && $k != 'isCreateMicroFolder' && ! -d "$v" ]];then
+                echoN "创建 微服务 文件夹 $v"
+                mkdir -vp $v
+            fi
+
+            if [[ "$isCreateNmsFolder" == "true" && $k =~ 'createNmsFolder' && $k != 'isCreateNmsFolder' && ! -d "$v" ]];then
+                echoN "创建 网管 文件夹 $v"
+                mkdir -vp $v
+            fi
+
+            if [[ "$isCreateDispFolder" == "true" && $k =~ 'createDispFolder' && $k != 'isCreateDispFolder' && ! -d "$v" ]];then
+                echoN "创建 调度 文件夹 $v"
+                mkdir -vp $v
+            fi
+
+            if [[ "$isCreateMapFolder" == "true" && $k =~ 'createMapFolder' && $k != 'isCreateMapFolder' && ! -d "$v" ]];then
+                echoN "创建 地图 文件夹 $v"
+                mkdir -vp $v
+            fi
+
+            if [[ "$isCreateLibCommonFolder" == "true" && $k =~ 'createLibCommonFolder' && $k != 'isCreateLibCommonFolder' && ! -d "$v" ]];then
+                echoN "创建 lib common库 文件夹 $v"
+                mkdir -vp $v
+            fi
+        done < $createFolderCfgPath
+    fi
 }
 
 # 选项目 - 暂时不用

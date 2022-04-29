@@ -1,5 +1,5 @@
 server: 
-  port: config_port
+  port: 7010
   
 spring:
   application:
@@ -11,7 +11,7 @@ spring:
     config:
       server:
         native:
-          search-locations: nmsCfgFolderPath
+                search-locations: nmsCfgFolderPath
 
 logging:
   config: log4j2-spring.xml

@@ -1,0 +1,35 @@
+## 固定格式 
+projectName=aj  # 项目名称
+
+# 要的的文件夹+文件
+packageSrcFath1=$projectPath/installPackages/aj/
+packageSrcFath2=$projectPath/installPackages/centos8
+packageSrcFath3=$projectPath/installPackages/installShell
+packageSrcFath4=$projectPath/installPackages/map
+packageSrcFath5=$projectPath/installPackages/myshell
+packageSrcFath6=$projectPath/installPackages/commonConf
+packageSrcFath7=$projectPath/installPackages/gateway
+packageSrcFath8=$projectPath/installPackages/aj-jds
+
+packageDstFath1=$projectPath/package/aj/installPackages/
+packageDstFath2=$projectPath/package/aj/installPackages/
+packageDstFath3=$projectPath/package/aj/installPackages/
+packageDstFath4=$projectPath/package/aj/installPackages/
+packageDstFath5=$projectPath/package/aj/installPackages/
+packageDstFath6=$projectPath/package/aj/installPackages/
+packageDstFath7=$projectPath/package/aj/installPackages/
+packageDstFath8=$projectPath/package/aj/installPackages/
+
+
+
+
+
+
+
+
+
+
+
+
+
+

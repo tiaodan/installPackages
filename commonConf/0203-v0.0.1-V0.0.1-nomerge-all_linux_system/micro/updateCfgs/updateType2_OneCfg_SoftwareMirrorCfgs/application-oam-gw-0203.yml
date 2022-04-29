@@ -1,0 +1,168 @@
+server:
+  port: 7380
+  servlet:
+    context-path: /api 
+
+spring:
+  # zipkin:
+  # base-url: http://192.168.3.61:8769
+  application:
+    name: oss-oam-gw
+  datasource:
+    dynamic:
+      # 是否开启 SQL日志输出，生产环境建议关闭，有性能损耗
+      p6spy: true
+      hikari:
+        connection-timeout: 30000
+        max-lifetime: 1800000
+        max-pool-size: 30
+        min-idle: 10
+        connection-test-query: select 1
+        pool-name: SunkHikariCP
+      # 配置默认数据源
+      primary: primary
+      datasource:
+        # 数据源-1，名称为 primary
+        primary:
+          username: root
+          password: sunkaisens
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://mysql.com:3306/0203_resource_service?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
+        # 数据源-2，名称为 slave
+        db2:
+          username: root
+          password: sunkaisens
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://mysql.com:3306/0203_alarm_service?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
+  aop:
+    proxy-target-class: true
+  messages:
+    encoding: utf-8
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  redis:
+    host: redis.com
+    port: 6381
+    password:
+    jedis:
+      pool:
+        min-idle: 8
+        max-idle: 500
+        max-active: 2000
+        max-wait: 10000
+    timeout: 0
+    #  mqtt:
+    #    enabled: true
+    #    url: "tcp://emqtt.com:1883"
+    #    clientIdPrefix: ${spring.application.name}
+    #    OamTopic: "$share/1808/alarm-service/alarm"
+    #    FrontTopic: "front-service/alarm"
+    #    TopologyTopic: "topology-service/alarm"
+    #    resourceTopic: "resource-service/status_alarm"
+    #    alarmTopic: "alarm"
+    #    fault: "front-0203/alarm"
+    #    linkStatus: "front-0203/linkStatus"
+    #    deviceStatus: "front-0203/deviceStatus"
+    #    username: admin
+    #    password: password
+    #    timeout: 30
+    #    keepAlive: 60
+
+    #  activemq:
+    #    broker-url: tcp://activemq.com:61616
+    #    user: admin
+    #    password: admin
+    #    close-timeout: 15s   # 在考虑结束之前等待的时间
+    #    in-memory: true      # 默认代理URL是否应该在内存中。如果指定了显式代理，则忽略此值。
+    #    non-blocking-redelivery: false  # 是否在回滚回滚消息之前停止消息传递。这意味着当启用此命令时，消息顺序不会被保留。
+    #    send-timeout: 0     # 等待消息发送响应的时间。设置为0等待永远。
+    #    mq-queue-alarm: alarm
+    #    topic-name: active.topic.name.model
+
+    #    packages:
+    #      trust-all: true #不配置此项，会报错
+#    pool:
+#      enabled: true
+#      max-connections: 10   #连接池最大连接数
+#      idle-timeout: 30000   #空闲的连接过期时间，默认为30秒
+
+#    jms:
+#      pub-sub-domain: true  #默认为false，即queue模式，若要使用topic模式需要配置为true，
+
+#mybatis plus 设置
+mybatis-plus:
+  type-aliases-package: com.sunkaisens.nms.model
+  # mapper-locations: classpath*:mapper/*/*.xml
+  mapper-locations: classpath:mapper.nms/**/*.xml
+  configuration:
+    jdbc-type-for-null: null
+  global-config:
+    # 关闭 mybatis-plus的 banner
+    banner: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+    shutdown:
+      enabled: true
+
+ibss:
+  # 是否异步记录用户操作日志
+  openAopLog: false
+  shiro:
+    # 后端免认证接口 url
+    anonUrl: /login,/logout/**,/regist,/user/check/**
+    # token有效期，单位秒
+    jwtTimeOut: 7200
+    # 更新令牌时间检查配置，10分钟刷新一次     单位 ：秒
+    refreshCheckTime: 600
+  ip2region:
+    enabled: false
+  # 单次最大批量入库数量
+  max:
+    batch:
+      insert:
+        num: 1000
+
+#配置pageHelper分页插件
+pagehelper:
+  helperDialect: oracle
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+eureka:
+  client: #客户端注册进eureka服务列表内
+    enabled: true
+    service-url:
+      defaultZone: http://eureka.com:7000/eureka/,http://eureka.com:7001/eureka/
+  instance:
+    instance-id: ${spring.application.name}-${server.port}
+    #ip-address: oss.com    
+    prefer-ip-address: true     #访问路径可以显示IP地址
+    health-check-url-path: ${server.servlet.context-path}/actuator/health
+
+feign:
+  hystrix:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: SEMAPHORE
+
+info:
+  app.name: ${spring.application.name}
+  company.name: www.sunkaisense.com
+
+logging:
+  config: log4j2-spring.xml
+

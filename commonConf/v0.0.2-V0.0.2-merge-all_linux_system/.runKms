@@ -1,0 +1,6 @@
+#!/bin/bash 
+
+# 启动kms
+cd /home/SK_KMS/
+./kms_start.sh &
+

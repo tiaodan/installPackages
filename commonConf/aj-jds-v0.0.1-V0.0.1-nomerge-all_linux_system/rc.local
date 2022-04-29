@@ -1,0 +1,43 @@
+#!/bin/bash 
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+cd /root
+chmod +x .runTomcat
+./.runTomcat
+
+cd /root
+chmod +x .runKms
+./.runKms
+
+cd /root
+chmod +x .runBaseService
+./.runBaseService
+
+cd /root
+chmod +x .runMicro
+./.runMicro
+
+cd /root
+chmod +x .runNms
+./.runNms
+
+cd /root
+chmod +x .runIcss
+./.runIcss
+
+cd /root
+chmod +x .runSwitch
+./.runSwitch
+
+
+
+exit 0

@@ -1,0 +1,23 @@
+emqx土狗
+
+【说明】
+        此工具为emqx.service的进程掉线监控及恢复工具。
+
+【！！！注意】
+        （1）如果emqx未注册为启动服务，请先注册为“emqx.service”的服务；
+        （2）如果服务名不为“eqmx.service”，或未注册为服务，请必须先修改cron_emqx文件“systemctl start emqx.service”为实际重启emqx服务的命令。
+        （3）如果1分钟后查不到“cron_emqx.sh”的进程，请执行“select-editor”，选“/usr/bin/vim.basic”，然后执行“crontab -e”，做一下“假”编辑，看到“crontab: installing new crontab”的提示后，再观察。
+
+【文件内容】
+──emqx-dog
+    ├─cron_emqx
+    ├─cron_emqx_install.sh
+    ├─cron_emqx_uninstall.sh
+    └─安装说明.txt
+
+【安装说明】
+        （1）安装：执行cron_emqx_install.sh
+        （2）卸载：执行cron_emqx_uninstall.sh
+		
+【日志文件】
+        /etc/emqx/cron.log：记录emqx服务掉线及重启情况。

@@ -1,6 +1,0 @@
-spring:
-  cloud:
-    config:
-      name: application
-      uri: http://config.com:config_port
-      profile: organization-aj03

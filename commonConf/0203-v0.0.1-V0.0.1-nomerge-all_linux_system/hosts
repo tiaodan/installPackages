@@ -1,0 +1,14 @@
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 kylinos
+
+localIp  eureka.com
+localIp  config.com
+localIp  mysql.com
+localIp  emqtt.com
+localIp  activemq.com
+localIp  redis.com
+localIp  canal.com
+localIp  gateway.com
+localIp  user-omc.com
+localIp  myomc.com
+localIp  mycat
+localIp  oss.com

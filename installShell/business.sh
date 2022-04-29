@@ -415,9 +415,9 @@ function installNginx() {
 	if [ "$systemVersion" == 'centos7' ];then
 	    echoR "installNginx --> centos7 流程"
 	    # 替换这个版本配置文件
-	    \cp $projectPath/installPackages/commonConf/nginx/centos7/nginx.conf $nginxInstallPath/nginx/conf
+	    \cp $projectPath/installPackages/commonConf/$versionCfgFolderName/nginx/$systemVersion/nginx.conf $nginxInstallPath/nginx/
 	    # 转成unix文件
-	    sed -i 's/\r//' $projectPath/installPackages/commonConf/nginx/centos7/update/update.txt
+	    sed -i 's/\r//' $projectPath/installPackages/commonConf/$versionCfgFolderName/nginx/$systemVersion/update/update.txt
         # 根据自定义文件，更新配置
         # read line
         while read line || [[ -n ${line} ]]
@@ -449,10 +449,10 @@ function installNginx() {
     elif [ "$systemVersion" == 'kylin' ];then
         echoR "installNginx --> kylin 流程"
         # 替换这个版本配置文件
-	    \cp $projectPath/installPackages/commonConf/nginx/kylin/nginx.conf $nginxInstallPath/nginx/conf
+	    \cp $projectPath/installPackages/commonConf/$versionCfgFolderName/nginx/$systemVersion/nginx.conf $nginxInstallPath/nginx/
 
 	    # 转成unix文件
-	    sed -i 's/\r//' $projectPath/installPackages/commonConf/nginx/kylin/update/update.txt
+	    sed -i 's/\r//' $projectPath/installPackages/commonConf/$versionCfgFolderName/nginx/$systemVersion/update/update.txt
         # 根据自定义文件，更新配置
         # read line
         while read line || [[ -n ${line} ]]
@@ -479,11 +479,12 @@ function installNginx() {
     elif [ "$systemVersion" == 'kylin-x86' ];then
 	    echoR "installNginx --> kylin-x86 流程"
 	    # 替换这个版本配置文件
-	    \cp $projectPath/installPackages/commonConf/nginx/kylin-x86/nginx.conf $nginxInstallPath/nginx/
-        \cp /usr/sbin/nginx /usr/sbin/
+	    \cp $projectPath/installPackages/commonConf/$versionCfgFolderName/nginx/$systemVersion/nginx.conf $nginxInstallPath/nginx/
+        \cp $projectPath/installPackages/commonConf/$versionCfgFolderName/nginx/$systemVersion/bin/nginx /usr/sbin/
+        chmod +x /usr/sbin/nginx*
 
 	    # 转成unix文件
-	    sed -i 's/\r//' $projectPath/installPackages/commonConf/nginx/kylin-x86/update/update.txt
+	    sed -i 's/\r//' $projectPath/installPackages/commonConf/$versionCfgFolderName/nginx/$systemVersion/update/update.txt
         # 根据自定义文件，更新配置
         # read line
         while read line || [[ -n ${line} ]]
@@ -495,8 +496,9 @@ function installNginx() {
             k=${line%=*}  # =前
             v=${line#*=}  # =后
             v=`eval echo ${v%#*}`  # 去掉空格, #号之前内容
+#            echo "要修改的key = $k"
             sed -i "s#$k#$v#g" $nginxInstallPath/nginx/nginx.conf  # 本地ip
-        done < $projectPath/installPackages/commonConf/nginx/kylin-x86/update/update.txt
+        done < $projectPath/installPackages/commonConf/$versionCfgFolderName/nginx/$systemVersion/update/update.txt
 
         # 7. 加权限
         chmod 777 $nginxInstallPath/nginx/*
@@ -516,9 +518,9 @@ function installNginx() {
     elif [ "$systemVersion" == 'centos8' ];then
 	    echoR "installNginx --> centos8 流程"
 	    # 替换这个版本配置文件
-	    \cp $projectPath/installPackages/commonConf/nginx/centos8/nginx.conf $nginxInstallPath/nginx/conf
+	    \cp $projectPath/installPackages/commonConf/$versionCfgFolderName/nginx/$systemVersion/nginx.conf $nginxInstallPath/nginx/
 	    # 转成unix文件
-	    sed -i 's/\r//' $projectPath/installPackages/commonConf/nginx/centos8/update/update.txt
+	    sed -i 's/\r//' $projectPath/installPackages/commonConf/$versionCfgFolderName/nginx/$systemVersion/update/update.txt
         # 根据自定义文件，更新配置
         # read line
         while read line || [[ -n ${line} ]]
@@ -1084,14 +1086,18 @@ function installEmqx(){
 	    # 5. 根据系统，判断安装包类型，解压到目的地
         unzipFile $emqxOfflinePakagePath $emqxInstallPath
         # 拷贝命令到/bin
-        chmod 777 $emqxInstallPath/emqx/*
-        \cp $emqxInstallPath/emqx/bin/emq* /bin
-        \cp $emqxInstallPath/emqx/bin/emq* /usr/bin
+#        chmod 777 $emqxInstallPath/emqx/*
+#        \cp -rf $emqxInstallPath/emqx/bin/emq* /bin
+#        \cp -rf $emqxInstallPath/emqx/bin/emq* /usr/bin
+#        mkdir -vp /usr/releases
+#        \cp -rf $emqxInstallPath/emqx/releases/emqx_vars  /usr/releases/emqx_vars
+        ln -s $emqxInstallPath/emqx/bin/emqx /usr/bin/emqx
 
         # 6. 根据系统，查找自定义的配置，修改软件实际配置文件
         # 7. 加权限
         chmod 777 /etc/init.d/*
         chmod +x /etc/rc.d/init.d/*
+        chmod 777 $emqxInstallPath/emqx/log/*
 
         # 8. 根据系统，制作自启动/添加自启动
         \cp $projectPath/installPackages/commonConf/emqx/kylin-x86/service/emqx /etc/init.d/
@@ -1208,6 +1214,7 @@ function restartEmqx(){
 #        /usr/local/emqx/bin/emqx start
         /etc/init.d/emqx stop
         /etc/init.d/emqx start
+        emqx start
     elif [ "$systemVersion" == 'centos8' ];then
         systemctl restart emqx
         /usr/lib/emqx/bin/emqx start
@@ -1224,6 +1231,7 @@ function startEmqx(){
     elif [ "$systemVersion" == 'kylin-x86' ];then
 #        /usr/local/emqx/bin/emqx start
         /etc/init.d/emqx start
+        emqx start
     elif [ "$systemVersion" == 'centos8' ];then
         /usr/lib/emqx/bin/emqx start
     fi
@@ -1608,7 +1616,8 @@ function initMysql(){
 
 
     echoR "导入 $versionCfgFolderName 内的数据库"
-    if [ "$systemVersion" == 'centos7' ];then
+    if [ "$projectName" == "2011" ];then
+        if [ "$systemVersion" == 'centos7' ];then
         # 增加权限
         echoN "<<<<<<< 添加权限"
         #增加权限
@@ -2013,6 +2022,7 @@ function initMysql(){
             ;;
         esac
 	fi
+    fi
 
 	case "$systemVersion" in
     'centos8')
@@ -2054,6 +2064,13 @@ function initMysql(){
         ;;
 	esac
 
+
+    # 通用
+    if [ "$projectName" == "0203" ];then
+        echoN "<<<<<<< 创建数据库"
+        echoN "安装所有导入数据库  $versionCfgFolderName"
+        mysql --force -uroot -psunkaisens < $projectPath/installPackages/commonConf/$versionCfgFolderName/mysql/sql/mysql210917.sql
+    fi
 
     # 情况多余数据
     cd $projectPath/installPackages/commonConf/$versionCfgFolderName/mysql/sql
@@ -4061,6 +4078,18 @@ function installRclocal() {
         esac
     fi
 
+    if [ "$projectName" == "0203" ];then
+        # 1. cp
+        echoN "0203项目 "
+        \cp $projectPath/installPackages/commonConf/$versionCfgFolderName/rc.local /etc
+
+        if [[ -f "/etc/rc.local" ]];then
+            echoR '自启动文件 已存在，安装成功！'
+        else
+            echoE '自启动文件 不存在，安装失败！'
+        fi
+    fi
+
     ## 拷贝rc.local --> /etc/rc.d/rc.local,以防有些系统启动的是/etc/rc.d/rc.local 这个文件
     \cp /etc/rc.local /etc/rc.d/
 
@@ -4215,7 +4244,7 @@ function installNmsFrontUpdateByCfg() {
     done
 
 
-	if [[ -d "$nmsFrontInstallPath/dist" ]];then
+	if [[ -d "$nmsFrontInstallPath" ]];then
 		echoR "网管前端 安装后的文件夹已存在，安装成功！"
 	else
 		echoE "网管前端 安装后的文件夹不存在，安装失败！"
@@ -6992,6 +7021,75 @@ function autoInstall(){
         esac
     fi
 
+     if [ "$projectName" == "0203" ];then
+        case $preInstallService in
+        1)
+            echoN "用户配置本机安装 == 0203 网管"
+            echoN '>>>>>>>>>>>>0203 网管'
+            onekeyInstallStartTime=$(date +"%Y-%m-%d %H:%M:%S")
+            # 给项目自动创建文件夹
+            crateProjectFolder
+    #        1. 安装nginx
+    #        2. 安装emqx
+    #        3. 安装redis
+    #        4. 安装地图
+    #        5. 安装mysql
+    #        6. 安装oam
+    #        7. 配置hosts
+    #        8. 安装调度台前端
+    #        9. 安装调度台后台
+    #        10. 初始化mysql
+    #        11. 安装自启动
+    #        12. 编译KMS
+    #        13. 安装网管前端
+    #        14. 安装网管后台
+    #        15. 安装微服务
+    #        16. 安装网管gateway
+    #        17. 安装 tcpdump
+    #        20. 离线安装KMS
+    #        21. 离线安装curl(模拟消息)
+    #        22. 离线安装jq(解析json)
+            offlineInstallSwitchCommonLib
+            disableFirewalld
+            closeVirbr0
+            offlineInstallCurl
+            offlineInstallJq
+            installActivemq
+#            offlineInstallFtp
+
+            installNginx
+            installEmqx
+#            installEmqxBridge
+            installRedis
+            installGooglemap
+            installMysql
+            initMysql
+#            installOamUpdateByCfg
+            installHosts
+            installRclocal
+#            installTcpdump
+#            offlineInstallKms
+            installMicroUpdateByCfg
+
+            # 装网管 给项目自动创建文件夹
+            echoN '>>>>>>>>>>>>装网管软件'
+#            installGatewayUpdateByCfg
+            installNmsFrontUpdateByCfg
+            installNmsBackUpdateByCfg
+
+            echoN '>>>>>>>>>>>>装调度软件'
+            # 装网管，给项目自动创建文件夹
+#            installDispBackUpdateByCfg
+
+#            offlineInstallEmqxWatchLog
+
+            #打印时间
+            onekeyInstallEndTime=$(date +"%Y-%m-%d %H:%M:%S")
+            onekeyInstallTimeSup=`expr $onekeyInstallEndTime - $onekeyInstallStartTime`
+            colorEcho "安装所有（不带核心网）,用时:" $nomal_info $onekeyInstallTimeSup "秒"
+            ;;
+        esac
+    fi
 
     autoInstallEndTime=$(date +"%Y-%m-%d %H:%M:%S")
     sys_autoInstallEndTime=$(date -d "$autoInstallEndTime" +%s)
@@ -7247,6 +7345,20 @@ function autoStart(){
             ;;
         1) # aj-jds
             echoN "进入 aj-jds"
+            startMysql
+            ;;
+        esac
+
+        bash /etc/rc.local
+    fi
+
+    if [ "$projectName" == "0203"  ];then
+        case $preInstallService in
+        1) # aj-nms
+            echoN "进入 0203-nms"
+            startNginx
+            startEmqx
+            startRedis
             startMysql
             ;;
         esac
@@ -8908,3 +9020,77 @@ function jdsSetRedisLocation(){
         redis-cli -p 6379 set "com.sunkaisens.location.jds" "{longitude:108.95,latitude:34.27,high:-3.8,time:063755.00}"
     fi
 }
+
+function installActivemq(){
+
+    # 0. 计时start
+    local startTime=$(date +%s)
+	echoN '>>>>>>>>>>>>安装 Activemq'
+
+    # 1. 读取配置，安装源+安装目的地
+    # 2. 判断配置是否正确，安装源+安装目的地是否正确？目录是否自动创建？
+	if [ ! -f "$activemqOfflinePakagePath" ];then
+		echoE "Activemq 安装文件 $activemqOfflinePakagePath 不存在, 请检查配置 activemqOfflinePakagePath"
+		echo "`(date +"%Y-%m-%d %H:%M:%S")` emqx 安装文件 $activemqOfflinePakagePath 不存在，安装失败！"  >> "$logfile/install-`(date +%Y%m%d)`.log"
+		return 0
+	fi
+
+    # 3. 根据系统，停掉服务
+    stopActivemq
+    # 4. 根据系统，删除已安装的程序包
+    cd $activemqInstallPath
+    rm -rf apache-activemq-5.15.10
+
+    # 5. 根据系统，判断安装包类型，解压到目的地
+    unzipFile $activemqOfflinePakagePath $activemqInstallPath
+
+    # 6. 根据系统，查找自定义的配置，修改软件实际配置文件
+    # 7. 加权限
+    chmod 777 $activemqInstallPath/apache-activemq-5.15.10/bin/*
+    # 9. 根据系统，检测是否安装成功
+    echoR 'activemq 安装成功！'
+    # 10. 根据实际情况，安装完之后是否要启动？-不启动
+	startActivemq
+
+    # 11. 计时end
+    local endTime=$(date +%s)
+    local timeSup=`expr $endTime - $startTime`
+    colorEcho "用时:" $nomal_info $timeSup "秒"
+}
+
+
+function stopActivemq() {
+	echoN "停止 activemq"
+	if [ -d "$activemqInstallPath/apache-activemq-5.15.10" ];then
+        chmod 777 $activemqInstallPath/apache-activemq-5.15.10/bin/*
+        cd $activemqInstallPath/apache-activemq-5.15.10/bin
+        ./activemq stop
+	fi
+
+    # pkill activemq
+	local pids=`getPidsByName activemq`
+    if [ -n "$pids" ];then
+	    kill -9 $pids
+    fi
+}
+
+
+function restartActivemq(){
+    echoN "重启 activemq"
+    if [ -d "$activemqInstallPath/apache-activemq-5.15.10" ];then
+        chmod 777 $activemqInstallPath/apache-activemq-5.15.10/bin/*
+        cd $activemqInstallPath/apache-activemq-5.15.10/bin
+        ./activemq restart
+    fi
+}
+
+
+function startActivemq(){
+    echoN "启动 activemq"
+    if [ -d "$activemqInstallPath/apache-activemq-5.15.10" ];then
+        chmod 777 $activemqInstallPath/apache-activemq-5.15.10/bin/*
+        cd $activemqInstallPath/apache-activemq-5.15.10/bin
+        ./activemq start
+    fi
+}
+

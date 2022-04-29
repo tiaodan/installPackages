@@ -4,19 +4,9 @@ customShellCfgAbsPath=$projectPath/installPackages/commonConf/$versionCfgFolderN
 
 # 实际要修改的软件配置 - 镜像配置(脚本自定义的) 绝对路径，如nms
 customSoftwareCfgAbsPath1=$projectPath/installPackages/commonConf/$versionCfgFolderName/nms/updateBootstraps/bootstraps/bootstrap-alarm.yml
-customSoftwareCfgAbsPath2=$projectPath/installPackages/commonConf/$versionCfgFolderName/nms/updateBootstraps/bootstraps/bootstrap-organization.yml
-customSoftwareCfgAbsPath3=$projectPath/installPackages/commonConf/$versionCfgFolderName/nms/updateBootstraps/bootstraps/bootstrap-resource.yml
-customSoftwareCfgAbsPath4=$projectPath/installPackages/commonConf/$versionCfgFolderName/nms/updateBootstraps/bootstraps/bootstrap-security.yml
-customSoftwareCfgAbsPath5=$projectPath/installPackages/commonConf/$versionCfgFolderName/nms/updateBootstraps/bootstraps/bootstrap-statistic.yml
-customSoftwareCfgAbsPath6=$projectPath/installPackages/commonConf/$versionCfgFolderName/nms/updateBootstraps/bootstraps/bootstrap-user.yml
 
 # 实际要修改的软件配置 绝对路径
-dstFileAbsPath1=$projectPath/nms/backend/sun-nms-alarm-service/bootstrap.yml
-dstFileAbsPath2=$projectPath/nms/backend/sun-nms-organization-service/bootstrap.yml
-dstFileAbsPath3=$projectPath/nms/backend/sun-nms-resource-service/bootstrap.yml
-dstFileAbsPath4=$projectPath/nms/backend/sun-nms-security-service/bootstrap.yml
-dstFileAbsPath5=$projectPath/nms/backend/sun-nms-statistic-service/bootstrap.yml
-dstFileAbsPath6=$projectPath/nms/backend/sun-nms-user-service/bootstrap.yml
+dstFileAbsPath1=$projectPath/nms/backend/sun-nms-alarm-service-0.0.1-SNAPSHOT/bootstrap.yml
 
 # 实际要修改的变量 key=value 形式
 ## 【ip相关】

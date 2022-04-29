@@ -1,0 +1,65 @@
+#!/bin/bash
+
+#/etc/init.d/oscardb_OSRDBd start
+
+
+cd /usr/local/apache-activemq-5.15.10/bin
+./activemq start
+
+sleep 10
+cd /usr/local/emqx/bin
+./emqx start
+
+
+
+cd /home/sun-nms/backend/micro/sun-nms-admin-server-0.0.1
+./run.sh start
+sleep 5
+
+cd /home/sun-nms/backend/micro/sun-nms-config-server-0.0.1
+./run.sh start
+sleep 5
+
+cd /home/sun-nms/backend/micro/sun-nms-register-server1-0.0.1
+./run.sh start
+sleep 15
+
+cd /home/sun-nms/backend/oss/sun-nms-resource-service-0.0.1-SNAPSHOT
+./run.sh start
+sleep 5
+
+cd /home/sun-nms/backend/oss/sun-nms-alarm-service-0.0.1-SNAPSHOT
+./run.sh start
+sleep 5
+
+cd /home/sun-nms/backend/oss/sun-nms-gmapsystem-server-0.0.1-SNAPSHOT
+./run.sh start
+sleep 5
+
+cd /home/sun-nms/backend/oss/sun-nms-hss-proxy-service-2.0.0-SNAPSHOT
+./run.sh start
+sleep 5
+
+cd /home/sun-nms/backend/oss/sun-nms-monitor-service-0.0.1
+./run.sh start
+sleep 5
+
+cd /home/sun-nms/backend/oss/sun-nms-organization-server-2.0.1-SNAPSHOT
+./run.sh start
+sleep 5
+
+cd /home/sun-nms/backend/oss/sun-nms-security-service-0.0.1-SNAPSHOT
+./run.sh start
+sleep 5
+
+cd /home/sun-nms/backend/oss/sun-nms-user-service-0.0.1-SNAPSHOT
+./run.sh start
+sleep 5
+
+cd /home/sun-nms/backend/oss/sun-nms-statistic-service-2.1.0-SNAPSHOT
+./run.sh start
+sleep 5
+
+
+
+exit 0

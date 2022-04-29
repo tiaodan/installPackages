@@ -1,0 +1,10 @@
+版本说明：
+emqx-dog-20220127:
+	*兼容centos6/7/8;
+	*兼容基于centos的kylin版本（0203用的kylin系统）。
+	
+emqx-dog-20220126:
+	*兼容基于arm平台的kylin sp4和sp3系统。
+		
+emqx-dog-20220125:
+	*首发版本基于arm平台的kylin sp4系统。

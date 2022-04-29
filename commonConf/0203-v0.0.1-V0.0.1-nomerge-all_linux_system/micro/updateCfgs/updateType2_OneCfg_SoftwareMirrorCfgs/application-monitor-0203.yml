@@ -1,0 +1,101 @@
+server:
+  port: 3333
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: oss-monitor-service
+  datasource:
+    dynamic:
+      # 是否开启 SQL日志输出，生产环境建议关闭，有性能损耗
+      p6spy: true
+      hikari:
+        connection-timeout: 30000
+        max-lifetime: 1800000
+        max-pool-size: 15
+        min-idle: 5
+        connection-test-query: select 1
+        pool-name: SunkHikariCP
+      # 配置默认数据源
+      primary: primary
+      datasource:
+        primary:
+          username: root
+          password: sunkaisens
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://mysql.com:3306/0203_monitor_service?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
+  mqtt: 
+    enabled: true
+    url: tcp://emqtt.com:1883
+    clientIdPrefix: ${spring.application.name}
+    topic: /raw_alarm/#,/raw_alarm1/#
+    username: admin
+    password: password
+    timeout: 30
+    keepAlive: 60
+    sendPeriod: 10000
+    vpxStatusTopic: resource-service/status_oam
+    netStatusTopic: resource-service/status_oam
+           
+mybatis-plus:
+  # model\u7684\u5305
+  type-aliases-package: com.sunkaisens.netControlTest.domain
+  mapper-locations: classpath:mapper/*.xml
+  
+logging:
+  config: classpath:log4j2-spring.xml
+  
+ssh1:
+  host: 172.46.24.75,172.46.24.74
+  port: 22,22
+  user: root,root
+  password: 123456,123456
+
+
+fh0102:   
+  check: 
+    cron: "*/10 * * * * ?"
+    
+  mainOrSub: 1 
+  
+  modelName: resource-service;security-service;alarmgenerater-service;alarm-service;devconfig-service;zkmonitor-service
+
+eureka:
+  client: #客户端注册进eureka服务列表内
+    enabled: true
+    service-url:
+      defaultZone: http://eureka.com:7000/eureka/,http://eureka.com:7001/eureka/
+  instance:
+    #ip-address: 10.100.1.119
+    instance-id: ${spring.application.name}-${server.port}
+    prefer-ip-address: true     #访问路径可以显示IP地址
+    health-check-url-path: ${server.servlet.context-path}/actuator/health
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ['info', 'metrics', 'health']
+  endpoint:
+    health:
+      show-details: ALWAYS
+  health:
+    redis:
+      enabled: false
+
+pagehelper:
+  helperDialect: oracle
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+script:
+  distUse: "df -h | awk '$NF==\"/\"{printf \"%d/%dGB (%.4f%%)\", $3,$2,$3*100/$2}'"
+  memoryUse: "free -m | awk 'NR==2{printf \"%s/%sMB (%.4f%%)\", $3,$2,$3*100/$2 }'"
+  cpuUse: "top -bn1 | grep '%Cpu' | awk '{printf \"%.2f\", $8}'"
+  networkReviveSpeed0: "cat /proc/net/dev | grep bond0 | sed 's/:/ /g'|awk '{print $2}'"
+  networkReviveSpeed5: "cat /proc/net/dev | grep bond0 | sed 's/:/ /g'|awk '{print $2}'"
+  networkSendSpeed0: "cat /proc/net/dev | grep bond0 | sed 's/:/ /g'|awk '{print $10}'"
+  networkSendSpeed5: "cat /proc/net/dev | grep bond0 | sed 's/:/ /g'|awk '{print $10}'"  
+  

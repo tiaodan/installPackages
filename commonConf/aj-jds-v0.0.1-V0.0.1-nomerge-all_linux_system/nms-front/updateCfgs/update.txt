@@ -1,0 +1,57 @@
+# 固定格式
+# 脚本自定义配置 绝对路径
+customShellCfgAbsPath=$projectPath/installPackages/commonConf/$versionCfgFolderName/nms-front/updateCfgs/update.txt
+
+# 实际要修改的软件配置 - 镜像配置(脚本自定义的) 绝对路径，如nms
+customSoftwareCfgAbsPath1=$projectPath/installPackages/commonConf/$versionCfgFolderName/nms-front/updateCfgs/updateType2_OneCfg_SoftwareMirrorCfgs/config.js
+
+# 实际要修改的软件配置 绝对路径
+dstFileAbsPath1=$projectPath/nms/front/dist/static/config.js
+WWWx`
+# 实际要修改的变量 key=value 形式
+# 【ip相关】
+nmsIp=$nmsIp  # 网管ip
+microIp=$microIp
+
+# 【port 相关】
+security_port=7100
+usercenter_port=7900
+mqtt_manage_port=8083
+map_port=12001
+
+# 微服务-告警名称
+eurekaAlarmServiceName=$eurekaAlarmServiceName
+# 微服务-设备管理
+eurekaResourceServiceName=$eurekaResourceServiceName
+# 微服务-组织架构
+eurekaOrganizationServiceName=$eurekaOrganizationServiceName
+# 微服务-性能统计
+eurekaStatisticServiceName=$eurekaStatisticServiceName
+# 微服务-拓扑
+eurekaTopologyServiceName=$eurekaTopologyServiceName
+# 微服务-设备配置
+eurekaDevConfigServiceName=$eurekaDevConfigServiceName
+# 微服务-用户管理
+eurekaUserServiceName=$eurekaUserServiceName
+# 微服务-用户中心
+eurekaUserCenterServiceName=$eurekaUserCenterServiceName
+# 微服务-安全管理
+eurekaSecurityServiceName=$eurekaSecurityServiceName
+# 微服务-ne
+eurekaNeServiceName=$eurekaNeServiceName
+
+is_show_line=true
+is_show_alarm_remark=true
+nms_login_show_version=v1.0.3.1
+
+
+
+
+
+
+
+
+
+
+
+

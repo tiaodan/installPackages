@@ -1,0 +1,23 @@
+#!/bin/bash 
+
+sleep 3
+# EMQ
+emqx start
+sleep 5
+
+# mysql
+/etc/init.d/mysql stop
+/etc/init.d/mysql restart
+sleep 2
+
+# 启动nginx-起不来
+cd /usr/local/nginx
+/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf 
+sleep 5 
+
+# 启动redis 6380
+cd /usr/local/bin/
+#/usr/local/bin/redis-server /usr/local/redis-5.0.3/redis.conf &
+/usr/local/bin/redis-server /usr/local/redis-5.0.3/redis_6380.conf &
+sleep 5
+

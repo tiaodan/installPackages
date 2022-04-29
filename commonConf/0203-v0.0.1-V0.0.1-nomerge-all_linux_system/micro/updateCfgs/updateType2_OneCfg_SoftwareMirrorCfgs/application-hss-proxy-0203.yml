@@ -1,0 +1,234 @@
+server:
+  port: 9523
+  
+spring:
+  application:
+    name: oss-hss-proxy-service
+  autoconfigure: #排除原生Druid的快速配置类。
+    exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure
+  datasource:
+    dynamic:
+      # 是否开启 SQL日志输出，生产环境建议关闭，有性能损耗
+      p6spy: true
+      druid: #以下是全局默认值，可以全局更改
+        initial-size: 10
+        max-active: 500
+        min-idle: 10
+        max-wait: -1
+        min-evictable-idle-time-millis: 30000
+        max-evictable-idle-time-millis: 30000
+        time-between-eviction-runs-millis: 0
+        validation-query: select 1
+        validation-query-timeout: 10
+        test-on-borrow: false
+        test-on-return: false
+        test-while-idle: true
+        pool-prepared-statements: true
+        max-open-prepared-statements: 100
+        filters: stat,wall
+        share-prepared-statements: true
+        # 配置默认数据源
+      primary: master
+      datasource:
+        # 数据源-1，名称为 master 数据源配置 主要为核心网数据库(即现有的hss数据库)
+        master:
+          username: root
+          password: sunkaisens
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://mysql.com:3306/hss?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
+        hss1:
+          username: root
+          password: sunkaisens
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://mysql.com:3306/hss1?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
+        hss2:
+          username: root
+          password: sunkaisens
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://mysql.com:3306/hss2?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
+        hss3:
+          username: root
+          password: sunkaisens
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://mysql.com:3306/hss3?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
+        hss4:
+          username: root
+          password: sunkaisens
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://mysql.com:3306/hss4?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
+        myomc:
+          username: root
+          password: sunkaisens
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://mysql.com:3306/myomc?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
+        cscfDb:
+          username: root
+          password: sunkaisens
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://mysql.com:3306/cscf_db?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
+        proxy:
+          username: root
+          password: sunkaisens
+          driver-class-name: com.mysql.jdbc.Driver
+          url: jdbc:mysql://mysql.com:3306/0203_hss_proxy_service?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai&zeroDateTimeBehavior=convertToNull
+  aop:
+    proxy-target-class: true
+
+  messages:
+    encoding: utf-8
+    basename: i18n/messages
+
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+#mybatis plus 设置
+mybatis-plus:
+  type-aliases-package: com.sunkaisens.ibss.user.model
+  #配置要扫描的Xml的文件 即sql文件
+  mapper-locations: classpath:mapper/*/*/*.xml
+  configuration:
+    jdbc-type-for-null: null
+  global-config:
+    # 关闭 mybatis-plus的 banner
+    banner: false
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ['info', 'metrics', 'health']
+  endpoint:
+    health:
+      show-details: ALWAYS
+  health:
+    redis:
+      enabled: false
+
+swagger:
+  enable: true
+
+# oam配置ip和port 以及网元ID和实例ID
+oam:
+  # 主库
+  master:
+    addr: oam.com:6124
+    ne-inst: 259-1
+    sub-1:
+      addr: oam.com:6124
+      ne-inst: 259-1
+    sub-2:
+      addr: oam.com:6124
+      ne-inst: 259-2
+    sub-3:
+      addr: oam.com:6124
+      ne-inst: 259-3
+    sub-4:
+      addr: oam.com:6124
+      ne-inst: 259-4
+  # 备库
+  slave:
+    # 是否开启备库
+    switch: false
+    addr: oam.com:6124
+    ne-inst: 259-1
+    sub-1:
+      addr: oam.com:6124
+      ne-inst: 259-1
+    sub-2:
+      addr: oam.com:6124
+      ne-inst: 259-2
+    sub-3:
+      addr: oam.com:6124
+      ne-inst: 259-3
+    sub-4:
+      addr: oam.com:6124
+      ne-inst: 259-4
+#canal 配置
+ali:
+  canal:
+    switch: false
+    addr: canal.com
+    port: 21111
+    # 注意：带特殊字符的配置文件必须加双引号，否则会解析有误
+    # tablesubscribe: "hss\\..*"
+    tablesubscribe: "hss1.HLR,hss2.HLR,hss3.HLR,hss4.HLR"
+    destinations: hss1,hss2,hss3,hss4
+    user: root
+    password: root
+
+# group的ip port
+group:
+  ipaddr: mysql.com
+  port: 1000
+
+  # oam消息超时设置
+udp:
+  # 发送oam的UDP消息的延时时间(ms)
+  sendDelay: 50
+  # 发送oam的UDP消息的超时时间(s)
+  timeout: 5
+
+# 本地ip port  user管理项目的数据 xsh 2019/11/26
+omc:
+  ipaddr: mysql.com
+  port: 28500
+  # 是否开启HSS分库
+  hss-fk-switch: true
+  # HSS分库数量
+  hss-fk-count: 1
+  # 批量操作数据库的每组数据量
+  batch-seg: 100
+  # TerminalInfo表写入开关
+  terminalInfo-switch: true
+  # EpcData和EpcTft表写入开关
+  epc-switch: false
+  # EpcData和EpcTft表写入类型 LTE-TD(5) LTE-CPE(13)
+  epc-device-type: [ 5,13 ]
+  # Cscf表写入类型 DISP(8) IMS(12)
+  cscf-device-type: [ 8,12 ]
+  # 网系策略的UDP消息开关
+  net-policy-switch: false
+  #流文件路径
+  bear-qos-tft-file-path: /home/sun-nms/backend/oss/sun-nms-hss-proxy-service-2.0.0-SNAPSHOT/temp/
+  bear-qos-tft-file-name: BearQoSTFT.info
+  #流文件开关
+  bear-qos-tft-file-switch: false
+  # 批量修改，忽略AUC鉴权参数修改的设备类型
+  batch-update-ignore-auc-device-type: [ 7 ]
+  # 网间互联numOfVM开关，子网
+  numOfVM-switch: false
+  roaming-pdt-switch: false
+# 发送到北向接口   xsh 2020/8/6
+north:
+  switchControl: false
+  ip: mysql.com
+  port: 9888
+  timeout: 3
+
+ftp:
+  ip: oamftp.com
+  port: 21
+  username: root
+  password: 123456
+
+logging:
+  config: log4j2-spring.xml
+
+info:
+  app.name: ${spring.application.name}
+  company.name: www.sunkaisense.com
+
+ribbon:
+  eureka:
+    enabled: true
+
+eureka:
+  client: #客户端注册进eureka服务列表内
+    service-url:
+      defaultZone: http://eureka.com:7000/eureka/,http://eureka.com:7001/eureka/
+  instance:
+    instance-id: ${spring.application.name}-${server.port}
+    prefer-ip-address: true     #访问路径可以显示IP地址
+   
+

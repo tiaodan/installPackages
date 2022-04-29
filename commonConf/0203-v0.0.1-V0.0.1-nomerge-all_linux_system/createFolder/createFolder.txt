@@ -1,0 +1,30 @@
+# 绝对路径。如：/home/2011/installPackages, basesoftware就是要在以下填入的
+isCreateBaseFolder=true  # 项目基础目录
+createBaseFolder1=$projectPath/installPackages  # 安装包目录
+createBaseFolder2=$projectPath/backup  # 备份目录
+createBaseFolder3=$projectPath/installPackages/logs  # 日志目录
+
+# 微服务目录
+isCreateMicroFolder=true
+createMicroFolder1=$projectPath/micro
+
+# 网管目录
+isCreateNmsFolder=true
+createNmsFolder1=$projectPath/nms/backend
+createNmsFolder2=$projectPath/nms/front
+createNmsFolder3=$projectPath/gateway
+createNmsFolder4=$projectPath/nms/front/prj-0203-zhankong
+createNmsFolder5=$projectPath/nms/front/prj-0203-user
+
+# 调度目录
+isCreateDispFolder=false
+createDispFolder1=$projectPath/disp
+createDispFolder2=/root/.NE
+
+# 地图目录
+isCreateMapFolder=true
+createMapFolder1=$projectPath/googlemaps
+
+# lib库目录
+isCreateLibCommonFolder=true
+createLibCommonFolder1=/home/common

@@ -1,0 +1,40 @@
+\n
+1. 更新调度 group (群组)\n
+2. 更新调度 dispatcher\n
+3. 更新调度 dds\n
+4. 更新调度 imserver (短信服务)\n
+5. 更新调度 presence (呈现服务) \n
+6. 更新调度 dcsgxcap \n
+7. 更新调度 agw \n
+8. 更新调度 合并版本（1-20 调度预留） \n
+\n
+21. 更新网管 nms-security (登录) \n
+22. 更新网管 nms-organization (登录\n) 
+23. 更新网管 nms-organization (组织机构) \n
+24. 更新网管 nms-user (用户管理) \n
+25. 更新网管 nms-alarm (告警) \n
+26. 更新网管 nms-resource (设备管理) \n
+27. 更新网管 nms-devconfig (拓扑) \n
+28. 更新网管 nms-oam (告警状态消息网管) \n
+29. 更新网管 nms-billing (计费) \n
+30. 更新网管合并版本 nms-resource-alarm (资源管理+ 告警管理) \n
+31. 更新网管合并版本 nms-user-hss-organization (组织架构+ 用户管理) \n
+32. 更新网管（21-40 网管预留） \n
+\n
+41. 更新核心网 BSC (基站) \n
+42. 更新网管 GGSN (分组数据) \n
+43. 更新网管 HSS () \n
+44. 更新网管 ISUP () \n
+45. 更新网管 MGC () \n
+46. 更新网管 MP () \n
+47. 更新网管 SIPGW () \n
+48. 更新网管 SIPT () \n
+49. 更新网管 SMSC () \n
+50. 更新网管合并版本 VCS() \n
+50. 更新网管合并版本 IMS() \n
+50. 更新网管合并版本 PCSCF() \n
+50. 更新网管合并版本 SCSCF() \n
+51. 更新网管合并版本 PGW (组织架构+ 用户管理) \n
+51. 更新网管合并版本 VMONITOR (组织架构+ 用户管理) \n
+52. 更新网管（41-60 核心网预留） \n
+	

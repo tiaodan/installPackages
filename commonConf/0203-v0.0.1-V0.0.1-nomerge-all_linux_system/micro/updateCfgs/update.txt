@@ -164,7 +164,7 @@ ftp_username=ftpuser  # ftp 登录用户名
 ftp_password=password  # ftp 登录密码
 
 ## 【其它】
-nmsCfgFolderPath=$projectPath/micro/sun-nms-config-server/config# 微服务配置文件路径目录
+nmsCfgFolderPath=$projectPath/micro/sun-nms-config-server/config # 微服务配置文件路径目录
 
 
 

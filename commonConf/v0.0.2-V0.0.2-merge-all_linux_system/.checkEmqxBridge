@@ -1,0 +1,14 @@
+#!/bin/bash 
+# 检测emqxBirdge
+echo "`(date +"%Y-%m-%d %H:%M:%S")` 定时检测桥接" >> "/root/run-`(date +%Y%m%d)`.log"
+if [[ `/bin/emqx_ctl bridges list` =~ 'Running' ]];then
+	echo "定时任务检测 emqx桥接，启动桥接成功"
+elee
+	echo "定时任务检测 emqx桥接，上级emqx 未启动！！"
+	echo "`(date +"%Y-%m-%d %H:%M:%S")` 定时任务检测 emqx桥接，上级emqx 未启动！！,启动桥接》》》》 " >> "/root/run-`(date +%Y%m%d)`.log"
+	/bin/emqx_ctl plugins reload emqx_bridge_mqtt
+    sleep 2
+    /bin/emqx_ctl bridges stop aws
+    /bin/emqx_ctl bridges start aws
+fi
+
