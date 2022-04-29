@@ -11,5 +11,16 @@
 /kylin-x86
 
 # 项目相关
+/project
+/0203
+/aj
+/aj-jds
 
 # 软件相关
+/software
+/disp
+/gateway
+/map
+/micro
+/nms
+/tomcat
